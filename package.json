@@ -1,9 +1,9 @@
 {
-  "name": "@kombos/telescope2",
+  "name": "@kombos/telescopemodule",
   "version": "0.0.1",
-  "description": "sample telescope modules for gravity bridge",
+  "description": "telescope generated endpoints for assetmante (sample)",
   "author": "kombos <kamlesh@assetmantle.one>",
-  "homepage": "https://github.com/kombos/telescope2#readme",
+  "homepage": "https://github.com/kombos/telescopemodule#readme",
   "license": "SEE LICENSE IN LICENSE",
   "main": "main/index.js",
   "module": "module/index.js",
@@ -31,19 +31,18 @@
     "lint": "eslint src --fix",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
-    "generateassetmantle": "npx buf export buf.build/assetmantle/schema --output ./proto"
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
   },
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kombos/telescope2"
+    "url": "https://github.com/kombos/telescopemodule"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/kombos/telescope2/issues"
+    "url": "https://github.com/kombos/telescopemodule/issues"
   },
   "devDependencies": {
     "@babel/cli": "7.19.3",
@@ -59,14 +58,7 @@
     "@babel/plugin-transform-runtime": "7.19.1",
     "@babel/preset-env": "7.19.4",
     "@babel/preset-typescript": "^7.18.6",
-    "@osmonauts/telescope": "^0.85.1",
-    "@protobufs/confio": "^0.0.6",
-    "@protobufs/cosmos": "^0.1.0",
-    "@protobufs/cosmos_proto": "^0.0.10",
-    "@protobufs/cosmwasm": "^0.1.1",
-    "@protobufs/gogoproto": "^0.0.10",
-    "@protobufs/google": "^0.0.10",
-    "@protobufs/ibc": "^0.1.0",
+    "@osmonauts/telescope": "^0.78.0",
     "@types/jest": "^29.1.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "29.1.2",
@@ -90,7 +82,6 @@
     "@cosmjs/proto-signing": "0.29.4",
     "@cosmjs/stargate": "0.29.4",
     "@cosmjs/tendermint-rpc": "^0.29.4",
-    "global": "^4.4.0",
     "protobufjs": "^6.11.2"
   }
 }
