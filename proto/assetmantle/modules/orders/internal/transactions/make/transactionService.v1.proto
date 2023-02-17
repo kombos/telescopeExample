@@ -1,0 +1,12 @@
+syntax = "proto3";
+package orders.transactions.make;
+
+import "google/api/annotations.proto";
+import "assetmantle/modules/orders/internal/transactions/make/message.v1.proto";
+import "assetmantle/modules/orders/internal/transactions/make/transactionResponse.v1.proto";
+
+service Transaction {
+  rpc Make(Message) returns (TransactionResponse) {
+    option (google.api.http).post = "/mantle/metas/make";
+  }
+}

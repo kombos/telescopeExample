@@ -1,0 +1,10 @@
+syntax = "proto3";
+package metas.transactions.reveal;
+
+import "assetmantle/schema/data/base/anyData.v1.proto";
+import "assetmantle/schema/ids/base/identityID.v1.proto";
+
+message Message {
+  string from = 1;
+  data.AnyData data = 2;
+}

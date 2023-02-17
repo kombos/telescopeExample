@@ -1,0 +1,12 @@
+syntax = "proto3";
+package splits.transactions.unwrap;
+
+import "google/api/annotations.proto";
+import "assetmantle/modules/splits/internal/transactions/unwrap/message.v1.proto";
+import "assetmantle/modules/splits/internal/transactions/unwrap/transactionResponse.v1.proto";
+
+service Transaction {
+  rpc Unwrap(Message) returns (TransactionResponse) {
+    option (google.api.http).post = "/mantle/splits/unwrap";
+  }
+}
