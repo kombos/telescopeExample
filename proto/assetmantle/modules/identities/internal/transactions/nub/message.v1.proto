@@ -1,8 +1,8 @@
 syntax = "proto3";
 package identities.transactions.nub;
 
-import "assetmantle/schema/ids/base/identityID.v1.proto";
-import "assetmantle/schema/ids/base/stringID.v1.proto";
+import "assetmantle/base/ids/v1/identityID.v1.proto";
+import "assetmantle/base/ids/v1/stringID.v1.proto";
 
 message Message {
   string from = 1;

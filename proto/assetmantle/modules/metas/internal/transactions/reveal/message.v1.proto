@@ -1,8 +1,8 @@
 syntax = "proto3";
 package metas.transactions.reveal;
 
-import "assetmantle/schema/data/base/anyData.v1.proto";
-import "assetmantle/schema/ids/base/identityID.v1.proto";
+import "assetmantle/base/data/v1/anyData.v1.proto";
+import "assetmantle/base/ids/v1/identityID.v1.proto";
 
 message Message {
   string from = 1;

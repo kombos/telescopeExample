@@ -1,7 +1,7 @@
 syntax = "proto3";
 package metas.queries.meta;
 
-import "assetmantle/schema/ids/base/dataID.v1.proto";
+import "assetmantle/base/ids/v1/dataID.v1.proto";
 import "gogoproto/gogo.proto";
 
 message QueryRequest {

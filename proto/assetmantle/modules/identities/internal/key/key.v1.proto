@@ -1,7 +1,7 @@
 syntax = "proto3";
 package identities;
 
-import "assetmantle/schema/ids/base/identityID.v1.proto";
+import "assetmantle/base/ids/v1/identityID.v1.proto";
 
 message Key {
   ids.IdentityID identity_i_d = 1;

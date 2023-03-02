@@ -3,7 +3,7 @@ package classifications;
 
 import "gogoproto/gogo.proto";
 import "assetmantle/modules/classifications/internal/mappable/mappable.v1.proto";
-import "assetmantle/schema/parameters/base/parameter.v1.proto";
+import "assetmantle/base/parameters/v1/parameter.v1.proto";
 
 message Genesis {
   option (gogoproto.goproto_getters) = false;

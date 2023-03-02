@@ -1,7 +1,7 @@
 syntax = "proto3";
 package metas;
 
-import "assetmantle/schema/data/base/anyData.v1.proto";
+import "assetmantle/base/data/v1/anyData.v1.proto";
 import "gogoproto/gogo.proto";
 
 message Mappable {

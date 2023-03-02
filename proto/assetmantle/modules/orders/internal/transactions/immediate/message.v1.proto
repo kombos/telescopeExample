@@ -2,11 +2,11 @@ syntax = "proto3";
 package orders.transactions.immediate;
 
 import "gogoproto/gogo.proto";
-import "assetmantle/schema/ids/base/classificationID.v1.proto";
-import "assetmantle/schema/ids/base/identityID.v1.proto";
-import "assetmantle/schema/ids/base/anyOwnableID.v1.proto";
-import "assetmantle/schema/lists/base/propertyList.v1.proto";
-import "assetmantle/schema/types/base/height.v1.proto";
+import "assetmantle/base/ids/v1/classificationID.v1.proto";
+import "assetmantle/base/ids/v1/identityID.v1.proto";
+import "assetmantle/base/ids/v1/anyOwnableID.v1.proto";
+import "assetmantle/base/lists/v1/propertyList.v1.proto";
+import "assetmantle/base/types/v1/height.v1.proto";
 
 message Message {
   string from = 1;

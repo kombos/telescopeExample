@@ -1,7 +1,7 @@
 syntax = "proto3";
 package assets.transactions.revoke;
-import "assetmantle/schema/ids/base/identityID.v1.proto";
-import "assetmantle/schema/ids/base/classificationID.v1.proto";
+import "assetmantle/base/ids/v1/identityID.v1.proto";
+import "assetmantle/base/ids/v1/classificationID.v1.proto";
 
 message Message{
   string from = 1;
