@@ -2,8 +2,8 @@ syntax = "proto3";
 package splits.transactions.unwrap;
 
 import "gogoproto/gogo.proto";
-import "assetmantle/schema/ids/base/identityID.v1.proto";
-import "assetmantle/schema/ids/base/anyOwnableID.v1.proto";
+import "assetmantle/base/ids/v1/identityID.v1.proto";
+import "assetmantle/base/ids/v1/anyOwnableID.v1.proto";
 
 message Message {
   string from = 1;

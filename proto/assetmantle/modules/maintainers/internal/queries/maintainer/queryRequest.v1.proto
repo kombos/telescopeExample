@@ -1,7 +1,7 @@
 syntax = "proto3";
 package maintainers.queries.maintainer;
 
-import "assetmantle/schema/ids/base/maintainerID.v1.proto";
+import "assetmantle/base/ids/v1/maintainerID.v1.proto";
 import "gogoproto/gogo.proto";
 
 message QueryRequest {

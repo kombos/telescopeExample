@@ -1,7 +1,7 @@
 syntax = "proto3";
 package splits.queries.ownable;
 
-import "assetmantle/schema/ids/base/anyOwnableID.v1.proto";
+import "assetmantle/base/ids/v1/anyOwnableID.v1.proto";
 
 message QueryRequest {
   ids.AnyOwnableID ownable_i_d = 1;

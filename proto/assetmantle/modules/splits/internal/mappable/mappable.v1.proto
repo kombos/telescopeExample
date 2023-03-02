@@ -1,7 +1,7 @@
 syntax = "proto3";
 package splits;
 
-import "assetmantle/schema/types/base/split.v1.proto";
+import "assetmantle/base/types/v1/split.v1.proto";
 
 message Mappable {
   types.Split split = 1;

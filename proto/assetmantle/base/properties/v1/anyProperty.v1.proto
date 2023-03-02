@@ -1,0 +1,15 @@
+syntax = "proto3";
+package properties;
+
+import "assetmantle/base/properties/v1/mesaProperty.v1.proto";
+import "assetmantle/base/properties/v1/metaProperty.v1.proto";
+import "gogoproto/gogo.proto";
+
+message AnyProperty {
+  option (gogoproto.goproto_getters) = false;
+
+  oneof Impl {
+    properties.MesaProperty mesa_property = 1;
+    properties.MetaProperty meta_property = 2;
+  }
+}
