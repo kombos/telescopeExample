@@ -73,14 +73,11 @@ export const createRPCQueryClient = async ({
         }
       },
       splits: {
-        queries: {
-          ownable: (await import("./splits/internal/queries/ownable/service.v1.rpc.Service")).createRpcQueryExtension(client),
-          split: (await import("./splits/internal/queries/split/service.v1.rpc.Service")).createRpcQueryExtension(client)
-        },
-        transactions: {
-          send: (await import("./splits/internal/transactions/send/service.v1.rpc.Service")).createRpcQueryExtension(client),
-          unwrap: (await import("./splits/internal/transactions/unwrap/service.v1.rpc.Service")).createRpcQueryExtension(client),
-          wrap: (await import("./splits/internal/transactions/wrap/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        v1beta1: {
+          queries: {
+            ownable: (await import("./splits/internal/queries/ownable/service.v1.rpc.Query")).createRpcQueryExtension(client),
+            split: (await import("./splits/internal/queries/split/service.v1.rpc.Query")).createRpcQueryExtension(client)
+          }
         }
       }
     },

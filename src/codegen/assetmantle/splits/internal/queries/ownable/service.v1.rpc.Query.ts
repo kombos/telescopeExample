@@ -3,10 +3,10 @@ import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryRequest } from "./queryRequest.v1";
 import { QueryResponse } from "./queryResponse.v1";
-export interface Service {
+export interface Query {
   handle(request: QueryRequest): Promise<QueryResponse>;
 }
-export class ServiceClientImpl implements Service {
+export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
 
   constructor(rpc: Rpc) {
@@ -16,14 +16,14 @@ export class ServiceClientImpl implements Service {
 
   handle(request: QueryRequest): Promise<QueryResponse> {
     const data = QueryRequest.encode(request).finish();
-    const promise = this.rpc.request("assetmantle.splits.queries.ownable.Service", "Handle", data);
+    const promise = this.rpc.request("assetmantle.splits.v1beta1.queries.ownable.Query", "Handle", data);
     return promise.then(data => QueryResponse.decode(new _m0.Reader(data)));
   }
 
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
-  const queryService = new ServiceClientImpl(rpc);
+  const queryService = new QueryClientImpl(rpc);
   return {
     handle(request: QueryRequest): Promise<QueryResponse> {
       return queryService.handle(request);

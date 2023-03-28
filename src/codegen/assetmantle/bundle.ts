@@ -51,7 +51,8 @@ import * as _50 from "./orders/internal/mappable/mappable.v1";
 import * as _51 from "./splits/internal/genesis/genesis.v1";
 import * as _52 from "./splits/internal/key/key.v1";
 import * as _53 from "./splits/internal/mappable/mappable.v1";
-import * as _315 from "./rpc.query";
+import * as _330 from "./rpc.query";
+import * as _331 from "./rpc.tx";
 export namespace assetmantle {
   export const assets = { ..._1,
     ..._2,
@@ -119,10 +120,13 @@ export namespace assetmantle {
     ..._49,
     ..._50
   };
-  export const splits = { ..._51,
-    ..._52,
-    ..._53
-  };
-  export const ClientFactory = { ..._315
+  export namespace splits {
+    export const v1beta1 = { ..._51,
+      ..._52,
+      ..._53
+    };
+  }
+  export const ClientFactory = { ..._330,
+    ..._331
   };
 }

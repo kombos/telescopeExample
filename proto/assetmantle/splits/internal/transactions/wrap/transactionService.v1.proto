@@ -1,11 +1,11 @@
 syntax = "proto3";
-package assetmantle.splits.transactions.wrap;
+package assetmantle.splits.v1beta1.transactions.wrap;
 
 import "google/api/annotations.proto";
 import "assetmantle/splits/internal/transactions/wrap/message.v1.proto";
 import "assetmantle/splits/internal/transactions/wrap/transactionResponse.v1.proto";
 
-service Transaction {
+service Msg {
   rpc Wrap(Message) returns (TransactionResponse) {
     option (google.api.http).post = "/mantle/splits/wrap";
   }
