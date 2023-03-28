@@ -1,17 +1,17 @@
-import * as _22 from "../assetmantle/schema/data/base/accAddressData.v1";
-import * as _23 from "../assetmantle/schema/data/base/anyData.v1";
-import * as _24 from "../assetmantle/schema/data/base/booleanData.v1";
-import * as _25 from "../assetmantle/schema/data/base/decData.v1";
-import * as _26 from "../assetmantle/schema/data/base/heightData.v1";
-import * as _27 from "../assetmantle/schema/data/base/idData.v1";
-import * as _28 from "../assetmantle/schema/data/base/numberData.v1";
-import * as _29 from "../assetmantle/schema/data/base/stringData.v1";
-export const data = { ..._22,
-  ..._23,
-  ..._24,
-  ..._25,
-  ..._26,
-  ..._27,
-  ..._28,
-  ..._29
+import * as _4 from "../assetmantle/base/data/v1/accAddressData.v1";
+import * as _5 from "../assetmantle/base/data/v1/anyData.v1";
+import * as _6 from "../assetmantle/base/data/v1/booleanData.v1";
+import * as _7 from "../assetmantle/base/data/v1/decData.v1";
+import * as _8 from "../assetmantle/base/data/v1/heightData.v1";
+import * as _9 from "../assetmantle/base/data/v1/idData.v1";
+import * as _10 from "../assetmantle/base/data/v1/numberData.v1";
+import * as _11 from "../assetmantle/base/data/v1/stringData.v1";
+export const data = { ..._4,
+  ..._5,
+  ..._6,
+  ..._7,
+  ..._8,
+  ..._9,
+  ..._10,
+  ..._11
 };

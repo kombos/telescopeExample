@@ -1,0 +1,8 @@
+syntax = "proto3";
+package assetmantle.assets.queries.asset;
+
+import "assetmantle/base/ids/internal/assetID.v1.proto";
+
+message QueryRequest {
+  ids.AssetID asset_i_d = 1;
+}

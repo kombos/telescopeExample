@@ -1,0 +1,4 @@
+syntax = "proto3";
+package assetmantle.metas.transactions.reveal;
+
+message Response {}

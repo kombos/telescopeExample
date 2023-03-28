@@ -10,13 +10,13 @@ export const createRPCQueryClient = async ({
   return {
     splits: {
       queries: {
-        ownable: (await import("../assetmantle/modules/splits/internal/queries/ownable/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        split: (await import("../assetmantle/modules/splits/internal/queries/split/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        ownable: (await import("../assetmantle/splits/internal/queries/ownable/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        split: (await import("../assetmantle/splits/internal/queries/split/service.v1.rpc.Service")).createRpcQueryExtension(client)
       },
       transactions: {
-        send: (await import("../assetmantle/modules/splits/internal/transactions/send/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        unwrap: (await import("../assetmantle/modules/splits/internal/transactions/unwrap/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        wrap: (await import("../assetmantle/modules/splits/internal/transactions/wrap/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        send: (await import("../assetmantle/splits/internal/transactions/send/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        unwrap: (await import("../assetmantle/splits/internal/transactions/unwrap/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        wrap: (await import("../assetmantle/splits/internal/transactions/wrap/service.v1.rpc.Service")).createRpcQueryExtension(client)
       }
     },
     cosmos: {

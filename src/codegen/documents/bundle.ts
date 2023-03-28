@@ -1,3 +1,3 @@
-import * as _30 from "../assetmantle/schema/documents/base/document.v1";
-export const documents = { ..._30
+import * as _12 from "../assetmantle/base/documents/v1/document.v1";
+export const documents = { ..._12
 };

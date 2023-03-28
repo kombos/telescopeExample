@@ -1,0 +1,10 @@
+syntax = "proto3";
+package assetmantle.orders.transactions.cancel;
+import "assetmantle/base/ids/internal/identityID.v1.proto";
+import "assetmantle/base/ids/internal/orderID.v1.proto";
+
+message Message{
+  string from = 1;
+  ids.IdentityID from_i_d = 2;
+  ids.OrderID order_i_d = 3;
+}

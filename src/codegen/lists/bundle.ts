@@ -1,5 +1,5 @@
-import * as _44 from "../assetmantle/schema/lists/base/idList.v1";
-import * as _45 from "../assetmantle/schema/lists/base/propertyList.v1";
-export const lists = { ..._44,
-  ..._45
+import * as _26 from "../assetmantle/base/lists/v1/idList.v1";
+import * as _27 from "../assetmantle/base/lists/v1/propertyList.v1";
+export const lists = { ..._26,
+  ..._27
 };

@@ -1,5 +1,5 @@
-import * as _52 from "../assetmantle/schema/types/base/height.v1";
-import * as _53 from "../assetmantle/schema/types/base/split.v1";
-export const types = { ..._52,
-  ..._53
+import * as _34 from "../assetmantle/base/types/v1/height.v1";
+import * as _35 from "../assetmantle/base/types/v1/split.v1";
+export const types = { ..._34,
+  ..._35
 };

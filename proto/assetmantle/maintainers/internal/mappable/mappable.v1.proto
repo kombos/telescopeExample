@@ -1,0 +1,8 @@
+syntax = "proto3";
+package assetmantle.maintainers;
+
+import "assetmantle/base/documents/internal/document.v1.proto";
+
+message Mappable {
+  documents.Document maintainer = 1;
+}

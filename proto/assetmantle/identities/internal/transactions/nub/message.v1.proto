@@ -1,0 +1,10 @@
+syntax = "proto3";
+package assetmantle.identities.transactions.nub;
+
+import "assetmantle/base/ids/internal/identityID.v1.proto";
+import "assetmantle/base/ids/internal/stringID.v1.proto";
+
+message Message {
+  string from = 1;
+  ids.StringID nub_i_d = 2;
+}

@@ -1,0 +1,4 @@
+syntax = "proto3";
+package assetmantle.orders.transactions.deputize;
+
+message Response {}

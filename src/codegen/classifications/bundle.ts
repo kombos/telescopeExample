@@ -1,7 +1,7 @@
-import * as _4 from "../assetmantle/modules/classifications/internal/genesis/genesis.v1";
-import * as _5 from "../assetmantle/modules/classifications/internal/key/key.v1";
-import * as _6 from "../assetmantle/modules/classifications/internal/mappable/mappable.v1";
-export const classifications = { ..._4,
-  ..._5,
-  ..._6
+import * as _36 from "../assetmantle/classifications/internal/genesis/genesis.v1";
+import * as _37 from "../assetmantle/classifications/internal/key/key.v1";
+import * as _38 from "../assetmantle/classifications/internal/mappable/mappable.v1";
+export const classifications = { ..._36,
+  ..._37,
+  ..._38
 };

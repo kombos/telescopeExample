@@ -10,16 +10,16 @@ export const createRPCQueryClient = async ({
   return {
     assets: {
       queries: {
-        asset: (await import("../assetmantle/modules/assets/internal/queries/asset/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        asset: (await import("../assetmantle/assets/internal/queries/asset/service.v1.rpc.Service")).createRpcQueryExtension(client)
       },
       transactions: {
-        burn: (await import("../assetmantle/modules/assets/internal/transactions/burn/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        define: (await import("../assetmantle/modules/assets/internal/transactions/define/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        deputize: (await import("../assetmantle/modules/assets/internal/transactions/deputize/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        mint: (await import("../assetmantle/modules/assets/internal/transactions/mint/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        mutate: (await import("../assetmantle/modules/assets/internal/transactions/mutate/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        renumerate: (await import("../assetmantle/modules/assets/internal/transactions/renumerate/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        revoke: (await import("../assetmantle/modules/assets/internal/transactions/revoke/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        burn: (await import("../assetmantle/assets/internal/transactions/burn/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        define: (await import("../assetmantle/assets/internal/transactions/define/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        deputize: (await import("../assetmantle/assets/internal/transactions/deputize/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        mint: (await import("../assetmantle/assets/internal/transactions/mint/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        mutate: (await import("../assetmantle/assets/internal/transactions/mutate/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        renumerate: (await import("../assetmantle/assets/internal/transactions/renumerate/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        revoke: (await import("../assetmantle/assets/internal/transactions/revoke/service.v1.rpc.Service")).createRpcQueryExtension(client)
       }
     },
     cosmos: {
