@@ -16,7 +16,7 @@ export class ServiceClientImpl implements Service {
 
   handle(request: Message): Promise<Response> {
     const data = Message.encode(request).finish();
-    const promise = this.rpc.request("orders.transactions.define.Service", "Handle", data);
+    const promise = this.rpc.request("assetmantle.orders.transactions.define.Service", "Handle", data);
     return promise.then(data => Response.decode(new _m0.Reader(data)));
   }
 

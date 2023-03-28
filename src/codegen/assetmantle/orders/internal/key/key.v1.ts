@@ -1,4 +1,4 @@
-import { OrderID, OrderIDSDKType } from "../../../base/ids/v1/orderID.v1";
+import { OrderID, OrderIDSDKType } from "../../../base/ids/internal/orderID.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../helpers";
 export interface Key {

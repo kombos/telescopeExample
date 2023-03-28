@@ -1,4 +1,4 @@
-import { IdentityID, IdentityIDSDKType } from "../../../../base/ids/v1/identityID.v1";
+import { IdentityID, IdentityIDSDKType } from "../../../../base/ids/internal/identityID.v1";
 import { Coin, CoinSDKType } from "../../../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../../helpers";

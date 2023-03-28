@@ -6,5 +6,5 @@ import "assetmantle/base/ids/internal/identityID.v1.proto";
 message Message {
   string from = 1;
   string to = 2;
-  ids.IdentityID identity_i_d = 3;
+  assetmantle.base.ids.IdentityID identity_i_d = 3;
 }

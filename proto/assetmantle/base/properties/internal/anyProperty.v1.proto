@@ -9,7 +9,7 @@ message AnyProperty {
   option (gogoproto.goproto_getters) = false;
 
   oneof Impl {
-    properties.MesaProperty mesa_property = 1;
-    properties.MetaProperty meta_property = 2;
+    MesaProperty mesa_property = 1;
+    MetaProperty meta_property = 2;
   }
 }

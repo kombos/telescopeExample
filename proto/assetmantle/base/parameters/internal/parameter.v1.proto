@@ -6,5 +6,5 @@ import "assetmantle/base/properties/internal/metaProperty.v1.proto";
 
 message Parameter {
   option (gogoproto.goproto_getters) = false;
-  properties.MetaProperty meta_property = 1;
+  assetmantle.base.properties.MetaProperty meta_property = 1;
 }

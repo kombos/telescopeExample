@@ -1,4 +1,4 @@
-import { MaintainerID, MaintainerIDSDKType } from "../../../base/ids/v1/maintainerID.v1";
+import { MaintainerID, MaintainerIDSDKType } from "../../../base/ids/internal/maintainerID.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../helpers";
 export interface Key {

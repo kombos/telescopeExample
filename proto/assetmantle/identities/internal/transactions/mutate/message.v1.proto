@@ -6,8 +6,8 @@ import "assetmantle/base/lists/internal/propertyList.v1.proto";
 
 message Message {
   string from = 1;
-  ids.IdentityID from_i_d = 2;
-  ids.IdentityID identity_i_d = 3;
-  lists.PropertyList mutable_meta_properties = 4;
-  lists.PropertyList mutable_properties = 5;
+  assetmantle.base.ids.IdentityID from_i_d = 2;
+  assetmantle.base.ids.IdentityID identity_i_d = 3;
+  assetmantle.base.lists.PropertyList mutable_meta_properties = 4;
+  assetmantle.base.lists.PropertyList mutable_properties = 5;
 }

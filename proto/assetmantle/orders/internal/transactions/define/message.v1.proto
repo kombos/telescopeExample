@@ -6,9 +6,9 @@ import "assetmantle/base/lists/internal/propertyList.v1.proto";
 
 message Message {
   string from = 1;
-  ids.IdentityID from_i_d = 2;
-  lists.PropertyList immutable_meta_properties = 3;
-  lists.PropertyList immutable_properties = 4;
-  lists.PropertyList mutable_meta_properties = 5;
-  lists.PropertyList mutable_properties = 6;
+  assetmantle.base.ids.IdentityID from_i_d = 2;
+  assetmantle.base.lists.PropertyList immutable_meta_properties = 3;
+  assetmantle.base.lists.PropertyList immutable_properties = 4;
+  assetmantle.base.lists.PropertyList mutable_meta_properties = 5;
+  assetmantle.base.lists.PropertyList mutable_properties = 6;
 }

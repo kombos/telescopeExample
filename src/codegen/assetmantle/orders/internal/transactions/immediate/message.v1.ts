@@ -1,8 +1,8 @@
-import { IdentityID, IdentityIDSDKType } from "../../../../base/ids/v1/identityID.v1";
-import { ClassificationID, ClassificationIDSDKType } from "../../../../base/ids/v1/classificationID.v1";
-import { AnyOwnableID, AnyOwnableIDSDKType } from "../../../../base/ids/v1/anyOwnableID.v1";
-import { Height, HeightSDKType } from "../../../../base/types/v1/height.v1";
-import { PropertyList, PropertyListSDKType } from "../../../../base/lists/v1/propertyList.v1";
+import { IdentityID, IdentityIDSDKType } from "../../../../base/ids/internal/identityID.v1";
+import { ClassificationID, ClassificationIDSDKType } from "../../../../base/ids/internal/classificationID.v1";
+import { AnyOwnableID, AnyOwnableIDSDKType } from "../../../../base/ids/internal/anyOwnableID.v1";
+import { Height, HeightSDKType } from "../../../../base/types/internal/height.v1";
+import { PropertyList, PropertyListSDKType } from "../../../../base/lists/internal/propertyList.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../../helpers";
 export interface Message {

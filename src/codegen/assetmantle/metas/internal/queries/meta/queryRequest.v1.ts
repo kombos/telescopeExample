@@ -1,4 +1,4 @@
-import { DataID, DataIDSDKType } from "../../../../base/ids/v1/dataID.v1";
+import { DataID, DataIDSDKType } from "../../../../base/ids/internal/dataID.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../../helpers";
 export interface QueryRequest {

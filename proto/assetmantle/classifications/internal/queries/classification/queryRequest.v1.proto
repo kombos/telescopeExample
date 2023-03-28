@@ -4,5 +4,5 @@ package assetmantle.classifications.queries.classification;
 import "assetmantle/base/ids/internal/classificationID.v1.proto";
 
 message QueryRequest {
-  ids.ClassificationID classification_i_d = 1;
+  assetmantle.base.ids.ClassificationID classification_i_d = 1;
 }

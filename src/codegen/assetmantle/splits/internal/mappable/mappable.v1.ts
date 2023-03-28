@@ -1,4 +1,4 @@
-import { Split, SplitSDKType } from "../../../base/types/v1/split.v1";
+import { Split, SplitSDKType } from "../../../base/types/internal/split.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../helpers";
 export interface Mappable {

@@ -16,7 +16,7 @@ export class ServiceClientImpl implements Service {
 
   handle(request: QueryRequest): Promise<QueryResponse> {
     const data = QueryRequest.encode(request).finish();
-    const promise = this.rpc.request("identities.queries.identity.Service", "Handle", data);
+    const promise = this.rpc.request("assetmantle.identities.queries.identity.Service", "Handle", data);
     return promise.then(data => QueryResponse.decode(new _m0.Reader(data)));
   }
 

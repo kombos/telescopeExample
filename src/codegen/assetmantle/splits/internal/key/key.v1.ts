@@ -1,4 +1,4 @@
-import { SplitID, SplitIDSDKType } from "../../../base/ids/v1/splitID.v1";
+import { SplitID, SplitIDSDKType } from "../../../base/ids/internal/splitID.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../helpers";
 export interface Key {
