@@ -3,7 +3,11 @@
   * DO NOT MODIFY BY HAND. Instead, download the latest proto files for your chain
   * and run the transpile command or yarn proto command to regenerate this bundle.
   */
- 
+
+import { assetmantle } from "./assetmantle/bundle";
+import { cosmos } from "./cosmos/bundle";
+
+
 export * from "./amino/bundle";
 export * from "./assetmantle/bundle";
 export * from "./ics23/bundle";
@@ -18,3 +22,6 @@ export * from "./ibc/bundle";
 export * from "./ibc/client";
 export * from "./tendermint/bundle";
 export * from "./extern";
+
+const {} = assetmantle.
+const {} = cosmos.ClientFactory.createRPCMsgClient;

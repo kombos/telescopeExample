@@ -13,8 +13,8 @@ message Message {
   assetmantle.base.ids.IdentityID from_i_d = 2;
   assetmantle.base.ids.ClassificationID classification_i_d = 3;
   assetmantle.base.ids.IdentityID taker_i_d = 4;
-  assetmantle.base.properties.MetaProperty maker_ownable_i_d = 5;
-  assetmantle.base.properties.MetaProperty taker_ownable_i_d = 6;
+  assetmantle.base.ids.AnyOwnableID maker_ownable_i_d = 5;
+  assetmantle.base.ids.AnyOwnableID taker_ownable_i_d = 6;
   assetmantle.base.types.Height expires_on = 7;
   string maker_ownable_split = 8 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = false];
   string taker_ownable_split = 9 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = false];

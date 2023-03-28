@@ -9,6 +9,6 @@ message Message {
   string from = 1;
   assetmantle.base.ids.IdentityID from_i_d = 2;
   assetmantle.base.ids.IdentityID to_i_d = 3;
-  assetmantle.base.properties.MetaProperty ownable_i_d = 4;
+  assetmantle.base.ids.AnyOwnableID ownable_i_d = 4;
   string value = 5 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = false];
 }
