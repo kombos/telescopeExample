@@ -1,4 +1,4 @@
-import { AnyOwnableID, AnyOwnableIDSDKType } from "../../../../base/ids/v1/anyOwnableID.v1";
+import { AnyOwnableID, AnyOwnableIDSDKType } from "../../../../base/ids/internal/anyOwnableID.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../../helpers";
 export interface QueryRequest {

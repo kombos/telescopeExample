@@ -1,5 +1,5 @@
 import { Mappable, MappableSDKType } from "../mappable/mappable.v1";
-import { Parameter, ParameterSDKType } from "../../../base/parameters/v1/parameter.v1";
+import { Parameter, ParameterSDKType } from "../../../base/parameters/internal/parameter.v1";
 import * as _m0 from "protobufjs/minimal";
 export interface Genesis {
   mappables: Mappable[];

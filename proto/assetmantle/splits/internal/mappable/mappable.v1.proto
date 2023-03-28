@@ -4,5 +4,5 @@ package assetmantle.splits;
 import "assetmantle/base/types/internal/split.v1.proto";
 
 message Mappable {
-  types.Split split = 1;
+  assetmantle.base.types.Split split = 1;
 }

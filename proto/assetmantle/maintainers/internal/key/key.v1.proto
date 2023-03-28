@@ -4,5 +4,5 @@ package assetmantle.maintainers;
 import "assetmantle/base/ids/internal/maintainerID.v1.proto";
 
 message Key {
-  ids.MaintainerID maintainer_i_d = 1;
+  assetmantle.base.ids.MaintainerID maintainer_i_d = 1;
 }

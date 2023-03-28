@@ -7,5 +7,5 @@ import "gogoproto/gogo.proto";
 message HeightData{
   option (gogoproto.goproto_getters) = false;
 
-  types.Height value = 1;
+  assetmantle.base.types.Height value = 1;
 }

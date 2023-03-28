@@ -1,4 +1,4 @@
-import { ClassificationID, ClassificationIDSDKType } from "../../../base/ids/v1/classificationID.v1";
+import { ClassificationID, ClassificationIDSDKType } from "../../../base/ids/internal/classificationID.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../helpers";
 export interface Key {

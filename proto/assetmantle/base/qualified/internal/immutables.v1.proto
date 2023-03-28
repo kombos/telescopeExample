@@ -6,5 +6,5 @@ import "gogoproto/gogo.proto";
 
 message Immutables {
   option (gogoproto.goproto_getters) = false;
-  lists.PropertyList property_list = 1;
+  assetmantle.base.lists.PropertyList property_list = 1;
 }

@@ -9,5 +9,5 @@ message Genesis {
   option (gogoproto.goproto_getters) = false;
 
   repeated Mappable mappables = 1;
-  repeated parameters.Parameter parameters = 2;
+  repeated assetmantle.base.parameters.Parameter parameters = 2;
 }

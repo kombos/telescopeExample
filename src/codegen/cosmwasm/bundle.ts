@@ -9,8 +9,8 @@ import * as _294 from "./wasm/v1/tx.amino";
 import * as _295 from "./wasm/v1/tx.registry";
 import * as _296 from "./wasm/v1/query.rpc.Query";
 import * as _297 from "./wasm/v1/tx.rpc.msg";
-import * as _324 from "./rpc.query";
-import * as _325 from "./rpc.tx";
+import * as _318 from "./rpc.query";
+import * as _319 from "./rpc.tx";
 export namespace cosmwasm {
   export namespace wasm {
     export const v1 = { ..._148,
@@ -26,7 +26,7 @@ export namespace cosmwasm {
       ..._297
     };
   }
-  export const ClientFactory = { ..._324,
-    ..._325
+  export const ClientFactory = { ..._318,
+    ..._319
   };
 }

@@ -7,5 +7,5 @@ import "gogoproto/gogo.proto";
 message IDData {
   option (gogoproto.goproto_getters) = false;
 
-  ids.AnyID value = 1;
+  assetmantle.base.ids.AnyID value = 1;
 }

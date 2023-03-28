@@ -1,4 +1,4 @@
-import { StringID, StringIDSDKType } from "../../../../base/ids/v1/stringID.v1";
+import { StringID, StringIDSDKType } from "../../../../base/ids/internal/stringID.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../../helpers";
 export interface Message {

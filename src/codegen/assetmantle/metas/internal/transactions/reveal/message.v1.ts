@@ -1,4 +1,4 @@
-import { AnyData, AnyDataSDKType } from "../../../../base/data/v1/anyData.v1";
+import { AnyData, AnyDataSDKType } from "../../../../base/data/internal/anyData.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../../helpers";
 export interface Message {

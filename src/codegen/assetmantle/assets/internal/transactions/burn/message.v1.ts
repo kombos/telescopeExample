@@ -1,5 +1,5 @@
-import { IdentityID, IdentityIDSDKType } from "../../../../base/ids/v1/identityID.v1";
-import { AssetID, AssetIDSDKType } from "../../../../base/ids/v1/assetID.v1";
+import { IdentityID, IdentityIDSDKType } from "../../../../base/ids/internal/identityID.v1";
+import { AssetID, AssetIDSDKType } from "../../../../base/ids/internal/assetID.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../../helpers";
 export interface Message {

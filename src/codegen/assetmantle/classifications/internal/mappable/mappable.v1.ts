@@ -1,4 +1,4 @@
-import { Document, DocumentSDKType } from "../../../base/documents/v1/document.v1";
+import { Document, DocumentSDKType } from "../../../base/documents/internal/document.v1";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../../helpers";
 export interface Mappable {

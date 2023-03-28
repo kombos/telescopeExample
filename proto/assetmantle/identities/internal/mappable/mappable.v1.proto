@@ -4,5 +4,5 @@ package assetmantle.identities;
 import "assetmantle/base/documents/internal/document.v1.proto";
 
 message Mappable {
-  documents.Document identity = 1;
+  assetmantle.base.documents.Document identity = 1;
 }

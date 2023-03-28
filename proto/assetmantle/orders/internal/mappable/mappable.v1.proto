@@ -3,5 +3,5 @@ package assetmantle.orders;
 
 import "assetmantle/base/documents/internal/document.v1.proto";
 message Mappable {
-  documents.Document order = 1;
+  assetmantle.base.documents.Document order = 1;
 }
