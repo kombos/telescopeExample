@@ -1,11 +1,11 @@
 syntax = "proto3";
-package assetmantle.splits.queries.ownable;
+package assetmantle.splits.v1beta1.queries.ownable;
 
 import "google/api/annotations.proto";
 import "assetmantle/splits/internal/queries/ownable/queryRequest.v1.proto";
 import "assetmantle/splits/internal/queries/ownable/queryResponse.v1.proto";
 
-service Service{
+service Query{
   rpc Handle(QueryRequest) returns(QueryResponse){
     option (google.api.http).get = "/mantle/splits/v1beta1/ownable";
   }

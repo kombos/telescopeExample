@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.splits.queries.split;
+package assetmantle.splits.v1beta1.queries.split;
 
 import "assetmantle/base/ids/internal/splitID.v1.proto";
 
