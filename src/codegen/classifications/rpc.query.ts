@@ -10,7 +10,7 @@ export const createRPCQueryClient = async ({
   return {
     classifications: {
       queries: {
-        classification: (await import("../assetmantle/modules/classifications/internal/queries/classification/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        classification: (await import("../assetmantle/classifications/internal/queries/classification/service.v1.rpc.Service")).createRpcQueryExtension(client)
       }
     },
     cosmos: {

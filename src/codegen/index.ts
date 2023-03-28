@@ -6,12 +6,6 @@
  
 export * from "./amino/bundle";
 export * from "./assets/bundle";
-export * from "./classifications/bundle";
-export * from "./identities/bundle";
-export * from "./maintainers/bundle";
-export * from "./metas/bundle";
-export * from "./orders/bundle";
-export * from "./splits/bundle";
 export * from "./data/bundle";
 export * from "./documents/bundle";
 export * from "./ids/bundle";
@@ -20,7 +14,12 @@ export * from "./parameters/bundle";
 export * from "./properties/bundle";
 export * from "./qualified/bundle";
 export * from "./types/bundle";
-export * from "./test/bundle";
+export * from "./classifications/bundle";
+export * from "./identities/bundle";
+export * from "./maintainers/bundle";
+export * from "./metas/bundle";
+export * from "./orders/bundle";
+export * from "./splits/bundle";
 export * from "./ics23/bundle";
 export * from "./cosmos_proto/bundle";
 export * from "./cosmos/bundle";

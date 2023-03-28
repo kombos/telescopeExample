@@ -10,18 +10,18 @@ export const createRPCQueryClient = async ({
   return {
     identities: {
       queries: {
-        identity: (await import("../assetmantle/modules/identities/internal/queries/identity/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        identity: (await import("../assetmantle/identities/internal/queries/identity/service.v1.rpc.Service")).createRpcQueryExtension(client)
       },
       transactions: {
-        define: (await import("../assetmantle/modules/identities/internal/transactions/define/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        deputize: (await import("../assetmantle/modules/identities/internal/transactions/deputize/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        issue: (await import("../assetmantle/modules/identities/internal/transactions/issue/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        mutate: (await import("../assetmantle/modules/identities/internal/transactions/mutate/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        nub: (await import("../assetmantle/modules/identities/internal/transactions/nub/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        provision: (await import("../assetmantle/modules/identities/internal/transactions/provision/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        quash: (await import("../assetmantle/modules/identities/internal/transactions/quash/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        revoke: (await import("../assetmantle/modules/identities/internal/transactions/revoke/service.v1.rpc.Service")).createRpcQueryExtension(client),
-        unprovision: (await import("../assetmantle/modules/identities/internal/transactions/unprovision/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        define: (await import("../assetmantle/identities/internal/transactions/define/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        deputize: (await import("../assetmantle/identities/internal/transactions/deputize/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        issue: (await import("../assetmantle/identities/internal/transactions/issue/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        mutate: (await import("../assetmantle/identities/internal/transactions/mutate/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        nub: (await import("../assetmantle/identities/internal/transactions/nub/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        provision: (await import("../assetmantle/identities/internal/transactions/provision/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        quash: (await import("../assetmantle/identities/internal/transactions/quash/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        revoke: (await import("../assetmantle/identities/internal/transactions/revoke/service.v1.rpc.Service")).createRpcQueryExtension(client),
+        unprovision: (await import("../assetmantle/identities/internal/transactions/unprovision/service.v1.rpc.Service")).createRpcQueryExtension(client)
       }
     },
     cosmos: {

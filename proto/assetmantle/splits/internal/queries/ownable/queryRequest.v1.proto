@@ -1,0 +1,8 @@
+syntax = "proto3";
+package assetmantle.splits.queries.ownable;
+
+import "assetmantle/base/ids/internal/anyOwnableID.v1.proto";
+
+message QueryRequest {
+  ids.AnyOwnableID ownable_i_d = 1;
+}

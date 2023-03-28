@@ -10,10 +10,10 @@ export const createRPCQueryClient = async ({
   return {
     metas: {
       queries: {
-        meta: (await import("../assetmantle/modules/metas/internal/queries/meta/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        meta: (await import("../assetmantle/metas/internal/queries/meta/service.v1.rpc.Service")).createRpcQueryExtension(client)
       },
       transactions: {
-        reveal: (await import("../assetmantle/modules/metas/internal/transactions/reveal/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        reveal: (await import("../assetmantle/metas/internal/transactions/reveal/service.v1.rpc.Service")).createRpcQueryExtension(client)
       }
     },
     cosmos: {

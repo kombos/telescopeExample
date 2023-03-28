@@ -1,7 +1,7 @@
-import * as _16 from "../assetmantle/modules/orders/internal/genesis/genesis.v1";
-import * as _17 from "../assetmantle/modules/orders/internal/key/key.v1";
-import * as _18 from "../assetmantle/modules/orders/internal/mappable/mappable.v1";
-export const orders = { ..._16,
-  ..._17,
-  ..._18
+import * as _48 from "../assetmantle/orders/internal/genesis/genesis.v1";
+import * as _49 from "../assetmantle/orders/internal/key/key.v1";
+import * as _50 from "../assetmantle/orders/internal/mappable/mappable.v1";
+export const orders = { ..._48,
+  ..._49,
+  ..._50
 };

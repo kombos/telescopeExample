@@ -1,0 +1,4 @@
+syntax = "proto3";
+package assetmantle.identities.transactions.unprovision;
+
+message Response {}

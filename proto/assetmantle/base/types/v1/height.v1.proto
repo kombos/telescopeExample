@@ -1,5 +1,5 @@
 syntax = "proto3";
-package types;
+package assetmantle.base.types;
 
 import "gogoproto/gogo.proto";
 

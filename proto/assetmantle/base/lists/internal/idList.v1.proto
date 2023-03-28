@@ -1,0 +1,11 @@
+syntax = "proto3";
+package assetmantle.base.lists;
+
+import "assetmantle/base/ids/internal/anyID.v1.proto";
+import "gogoproto/gogo.proto";
+
+message IDList {
+  option (gogoproto.goproto_getters) = false;
+
+  repeated ids.AnyID i_d_list = 1;
+}

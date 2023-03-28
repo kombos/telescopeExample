@@ -1,8 +1,8 @@
 syntax = "proto3";
-package types;
+package assetmantle.base.types;
 
-import "assetmantle/base/ids/v1/identityID.v1.proto";
-import "assetmantle/base/ids/v1/anyOwnableID.v1.proto";
+import "assetmantle/base/ids/internal/identityID.v1.proto";
+import "assetmantle/base/ids/internal/anyOwnableID.v1.proto";
 import "gogoproto/gogo.proto";
 
 message Split {

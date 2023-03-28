@@ -1,0 +1,12 @@
+syntax = "proto3";
+package assetmantle.assets.transactions.deputize;
+
+import "google/api/annotations.proto";
+import "assetmantle/assets/internal/transactions/deputize/message.v1.proto";
+import "assetmantle/assets/internal/transactions/deputize/response.v1.proto";
+
+service Service {
+  rpc Handle(Message) returns (Response) {
+    option (google.api.http).post = "/mantle/assets/deputize";
+  }
+}

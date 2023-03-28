@@ -1,0 +1,10 @@
+syntax = "proto3";
+package assetmantle.metas.transactions.reveal;
+
+import "assetmantle/base/data/internal/anyData.v1.proto";
+import "assetmantle/base/ids/internal/identityID.v1.proto";
+
+message Message {
+  string from = 1;
+  data.AnyData data = 2;
+}

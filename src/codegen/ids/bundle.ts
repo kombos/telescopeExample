@@ -1,27 +1,27 @@
-import * as _31 from "../assetmantle/schema/ids/base/anyID.v1";
-import * as _32 from "../assetmantle/schema/ids/base/anyOwnableID.v1";
-import * as _33 from "../assetmantle/schema/ids/base/assetID.v1";
-import * as _34 from "../assetmantle/schema/ids/base/classificationID.v1";
-import * as _35 from "../assetmantle/schema/ids/base/coinID.v1";
-import * as _36 from "../assetmantle/schema/ids/base/dataID.v1";
-import * as _37 from "../assetmantle/schema/ids/base/hashID.v1";
-import * as _38 from "../assetmantle/schema/ids/base/identityID.v1";
-import * as _39 from "../assetmantle/schema/ids/base/maintainerID.v1";
-import * as _40 from "../assetmantle/schema/ids/base/orderID.v1";
-import * as _41 from "../assetmantle/schema/ids/base/propertyID.v1";
-import * as _42 from "../assetmantle/schema/ids/base/splitID.v1";
-import * as _43 from "../assetmantle/schema/ids/base/stringID.v1";
-export const ids = { ..._31,
-  ..._32,
-  ..._33,
-  ..._34,
-  ..._35,
-  ..._36,
-  ..._37,
-  ..._38,
-  ..._39,
-  ..._40,
-  ..._41,
-  ..._42,
-  ..._43
+import * as _13 from "../assetmantle/base/ids/v1/anyID.v1";
+import * as _14 from "../assetmantle/base/ids/v1/anyOwnableID.v1";
+import * as _15 from "../assetmantle/base/ids/v1/assetID.v1";
+import * as _16 from "../assetmantle/base/ids/v1/classificationID.v1";
+import * as _17 from "../assetmantle/base/ids/v1/coinID.v1";
+import * as _18 from "../assetmantle/base/ids/v1/dataID.v1";
+import * as _19 from "../assetmantle/base/ids/v1/hashID.v1";
+import * as _20 from "../assetmantle/base/ids/v1/identityID.v1";
+import * as _21 from "../assetmantle/base/ids/v1/maintainerID.v1";
+import * as _22 from "../assetmantle/base/ids/v1/orderID.v1";
+import * as _23 from "../assetmantle/base/ids/v1/propertyID.v1";
+import * as _24 from "../assetmantle/base/ids/v1/splitID.v1";
+import * as _25 from "../assetmantle/base/ids/v1/stringID.v1";
+export const ids = { ..._13,
+  ..._14,
+  ..._15,
+  ..._16,
+  ..._17,
+  ..._18,
+  ..._19,
+  ..._20,
+  ..._21,
+  ..._22,
+  ..._23,
+  ..._24,
+  ..._25
 };

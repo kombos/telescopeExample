@@ -10,7 +10,7 @@ export const createRPCQueryClient = async ({
   return {
     maintainers: {
       queries: {
-        maintainer: (await import("../assetmantle/modules/maintainers/internal/queries/maintainer/service.v1.rpc.Service")).createRpcQueryExtension(client)
+        maintainer: (await import("../assetmantle/maintainers/internal/queries/maintainer/service.v1.rpc.Service")).createRpcQueryExtension(client)
       }
     },
     cosmos: {

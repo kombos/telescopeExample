@@ -1,0 +1,4 @@
+syntax = "proto3";
+package assetmantle.identities.transactions.nub;
+
+message Response {}

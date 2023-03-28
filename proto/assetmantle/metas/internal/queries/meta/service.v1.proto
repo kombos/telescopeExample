@@ -1,0 +1,12 @@
+syntax = "proto3";
+package assetmantle.metas.queries.meta;
+
+import "google/api/annotations.proto";
+import "assetmantle/metas/internal/queries/meta/queryRequest.v1.proto";
+import "assetmantle/metas/internal/queries/meta/queryResponse.v1.proto";
+
+service Service{
+  rpc Handle(QueryRequest) returns(QueryResponse){
+    option (google.api.http).get = "/mantle/metas/v1beta1/meta";
+  }
+}

@@ -1,0 +1,8 @@
+syntax = "proto3";
+package assetmantle.classifications;
+
+import "assetmantle/base/ids/internal/classificationID.v1.proto";
+
+message Key {
+  ids.ClassificationID classification_i_d = 1;
+}
