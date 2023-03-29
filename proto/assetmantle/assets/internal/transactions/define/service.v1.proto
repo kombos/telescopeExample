@@ -5,7 +5,7 @@ import "google/api/annotations.proto";
 import "assetmantle/assets/internal/transactions/define/message.v1.proto";
 import "assetmantle/assets/internal/transactions/define/response.v1.proto";
 
-service Service {
+service Msg {
   rpc Handle(Message) returns (Response) {
     option (google.api.http).post = "/mantle/assets/define";
   }

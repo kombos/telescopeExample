@@ -5,7 +5,7 @@ import "google/api/annotations.proto";
 import "assetmantle/identities/internal/transactions/mutate/message.v1.proto";
 import "assetmantle/identities/internal/transactions/mutate/response.v1.proto";
 
-service Service {
+service Msg {
   rpc Handle(Message) returns (Response) {
     option (google.api.http).post = "/mantle/identities/mutate";
   }
