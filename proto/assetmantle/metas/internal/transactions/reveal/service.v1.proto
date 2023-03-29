@@ -5,7 +5,7 @@ import "google/api/annotations.proto";
 import "assetmantle/metas/internal/transactions/reveal/message.v1.proto";
 import "assetmantle/metas/internal/transactions/reveal/response.v1.proto";
 
-service Service {
+service Msg {
   rpc Handle(Message) returns (Response) {
     option (google.api.http).post = "/mantle/metas/reveal";
   }
