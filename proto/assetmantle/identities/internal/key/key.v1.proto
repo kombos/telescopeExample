@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.identities;
+package assetmantle.identities.v1beta1;
 
 import "assetmantle/base/ids/internal/identityID.v1.proto";
 

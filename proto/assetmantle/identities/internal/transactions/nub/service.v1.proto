@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.identities.transactions.nub;
+package assetmantle.identities.v1beta1.transactions.nub;
 
 import "google/api/annotations.proto";
 import "assetmantle/identities/internal/transactions/nub/message.v1.proto";

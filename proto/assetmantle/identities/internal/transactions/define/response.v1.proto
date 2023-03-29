@@ -1,4 +1,4 @@
 syntax = "proto3";
-package assetmantle.identities.transactions.define;
+package assetmantle.identities.v1beta1.transactions.define;
 
 message Response {}
