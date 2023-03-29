@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.orders.transactions.immediate;
+package assetmantle.orders.v1beta1.transactions.immediate;
 
 import "google/api/annotations.proto";
 import "assetmantle/orders/internal/transactions/immediate/message.v1.proto";

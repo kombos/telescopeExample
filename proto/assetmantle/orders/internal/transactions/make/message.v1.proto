@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.orders.transactions.make;
+package assetmantle.orders.v1beta1.transactions.make;
 
 import "gogoproto/gogo.proto";
 import "assetmantle/base/ids/internal/classificationID.v1.proto";

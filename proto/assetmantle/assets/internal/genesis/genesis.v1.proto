@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.assets;
+package assetmantle.assets.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "assetmantle/assets/internal/mappable/mappable.v1.proto";

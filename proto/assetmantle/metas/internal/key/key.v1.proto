@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.metas;
+package assetmantle.metas.v1beta1;
 
 import "assetmantle/base/ids/internal/dataID.v1.proto";
 

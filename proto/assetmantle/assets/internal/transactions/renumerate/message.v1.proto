@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.assets.transactions.renumerate;
+package assetmantle.assets.v1beta1.transactions.renumerate;
 
 import "assetmantle/base/ids/internal/assetID.v1.proto";
 import "assetmantle/base/ids/internal/identityID.v1.proto";

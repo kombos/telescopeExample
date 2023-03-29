@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.metas.transactions.reveal;
+package assetmantle.metas.v1beta1.transactions.reveal;
 
 import "assetmantle/base/data/internal/anyData.v1.proto";
 import "assetmantle/base/ids/internal/identityID.v1.proto";
