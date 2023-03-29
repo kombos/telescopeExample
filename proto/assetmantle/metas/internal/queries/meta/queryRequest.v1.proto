@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.metas.queries.meta;
+package assetmantle.metas.v1beta1.queries.meta;
 
 import "assetmantle/base/ids/internal/dataID.v1.proto";
 import "gogoproto/gogo.proto";

@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.orders.queries.order;
+package assetmantle.orders.v1beta1.queries.order;
 
 import "gogoproto/gogo.proto";
 import "assetmantle/orders/internal/mappable/mappable.v1.proto";
@@ -8,5 +8,5 @@ message QueryResponse {
   option (gogoproto.goproto_getters) = false;
   bool success = 1;
   string error = 2;
-  repeated assetmantle.orders.Mappable list = 3;
+  repeated assetmantle.orders.v1beta1.Mappable list = 3;
 }

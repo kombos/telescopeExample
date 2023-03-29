@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.orders.transactions.deputize;
+package assetmantle.orders.v1beta1.transactions.deputize;
 
 import "assetmantle/base/ids/internal/classificationID.v1.proto";
 import "assetmantle/base/ids/internal/identityID.v1.proto";

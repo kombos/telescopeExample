@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.maintainers.queries.maintainer;
+package assetmantle.maintainers.v1beta1.queries.maintainer;
 
 import "assetmantle/base/ids/internal/maintainerID.v1.proto";
 import "gogoproto/gogo.proto";

@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.classifications;
+package assetmantle.classifications.v1beta1;
 
 import "assetmantle/base/documents/internal/document.v1.proto";
 message Mappable {
