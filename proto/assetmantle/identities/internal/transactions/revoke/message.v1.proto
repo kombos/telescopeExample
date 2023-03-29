@@ -1,5 +1,5 @@
 syntax = "proto3";
-package assetmantle.identities.transactions.revoke;
+package assetmantle.identities.v1beta1.transactions.revoke;
 
 import "assetmantle/base/ids/internal/classificationID.v1.proto";
 import "assetmantle/base/ids/internal/identityID.v1.proto";

@@ -11,7 +11,7 @@ telescope({
   protoDirs,
   outPath,
   options: {
-    experimentalGlobalProtoNamespace: true,
+    // experimentalGlobalProtoNamespace: true,
     tsDisable: {
       files: [
         'cosmos/authz/v1beta1/tx.amino.ts',
