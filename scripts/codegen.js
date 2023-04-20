@@ -11,7 +11,7 @@ telescope({
   protoDirs,
   outPath,
   options: {
-    // experimentalGlobalProtoNamespace: true,
+    experimentalGlobalProtoNamespace: true,
     tsDisable: {
       files: [
         'cosmos/authz/v1beta1/tx.amino.ts',
@@ -27,13 +27,16 @@ telescope({
         duration: 'duration'
       },
       methods: {
+        toAmino: true,
+        fromAmino: true,
         toJSON: true,
         fromJSON: true
       }
     },
     aminoEncoding: {
       enabled: true,
-      exceptions: AMINO_MAP
+      exceptions: AMINO_MAP,
+      useRecursiveV2encoding: true
     },
     lcdClients: {
       enabled: false
