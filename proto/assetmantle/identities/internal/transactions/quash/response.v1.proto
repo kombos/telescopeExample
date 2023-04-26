@@ -1,4 +1,0 @@
-syntax = "proto3";
-package assetmantle.identities.v1beta1.transactions.quash;
-
-message Response {}

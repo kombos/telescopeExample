@@ -1,8 +1,0 @@
-syntax = "proto3";
-package assetmantle.splits.v1beta1;
-
-import "assetmantle/base/types/internal/split.v1.proto";
-
-message Mappable {
-  assetmantle.base.types.Split split = 1;
-}

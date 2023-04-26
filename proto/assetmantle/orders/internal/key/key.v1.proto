@@ -1,8 +1,0 @@
-syntax = "proto3";
-package assetmantle.orders.v1beta1;
-
-import "assetmantle/base/ids/internal/orderID.v1.proto";
-
-message Key {
-  assetmantle.base.ids.OrderID order_i_d = 1;
-}

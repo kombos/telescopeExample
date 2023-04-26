@@ -1,4 +1,0 @@
-syntax = "proto3";
-package assetmantle.orders.v1beta1.transactions.immediate;
-
-message Response {}

@@ -1,4 +1,0 @@
-syntax = "proto3";
-package assetmantle.splits.v1beta1.transactions.send;
-
-message Response {}
