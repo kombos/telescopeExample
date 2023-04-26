@@ -3,6 +3,17 @@ import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
 export interface HashID {
   iDBytes: Uint8Array;
 }
+export interface HashIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.HashID";
+  value: Uint8Array;
+}
+export interface HashIDAmino {
+  i_d_bytes: Uint8Array;
+}
+export interface HashIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.HashID";
+  value: HashIDAmino;
+}
 export interface HashIDSDKType {
   i_d_bytes: Uint8Array;
 }
@@ -49,5 +60,30 @@ export const HashID = {
     const message = createBaseHashID();
     message.iDBytes = object.iDBytes ?? new Uint8Array();
     return message;
+  },
+  fromAmino(object: HashIDAmino): HashID {
+    return {
+      iDBytes: object.i_d_bytes
+    };
+  },
+  toAmino(message: HashID): HashIDAmino {
+    const obj: any = {};
+    obj.i_d_bytes = message.iDBytes;
+    return obj;
+  },
+  fromAminoMsg(object: HashIDAminoMsg): HashID {
+    return HashID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: HashIDProtoMsg): HashID {
+    return HashID.decode(message.value);
+  },
+  toProto(message: HashID): Uint8Array {
+    return HashID.encode(message).finish();
+  },
+  toProtoMsg(message: HashID): HashIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.HashID",
+      value: HashID.encode(message).finish()
+    };
   }
 };

@@ -1,8 +1,8 @@
-import { IdentityID, IdentityIDSDKType } from "../../../ids/base/identity_id";
-import { ClassificationID, ClassificationIDSDKType } from "../../../ids/base/classification_id";
-import { AnyOwnableID, AnyOwnableIDSDKType } from "../../../ids/base/any_ownable_id";
-import { Height, HeightSDKType } from "../../../types/base/height";
-import { PropertyList, PropertyListSDKType } from "../../../lists/base/property_list";
+import { IdentityID, IdentityIDAmino, IdentityIDSDKType } from "../../../ids/base/identity_id";
+import { ClassificationID, ClassificationIDAmino, ClassificationIDSDKType } from "../../../ids/base/classification_id";
+import { AnyOwnableID, AnyOwnableIDAmino, AnyOwnableIDSDKType } from "../../../ids/base/any_ownable_id";
+import { Height, HeightAmino, HeightSDKType } from "../../../types/base/height";
+import { PropertyList, PropertyListAmino, PropertyListSDKType } from "../../../lists/base/property_list";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface Message {
@@ -19,6 +19,29 @@ export interface Message {
   immutableProperties?: PropertyList;
   mutableMetaProperties?: PropertyList;
   mutableProperties?: PropertyList;
+}
+export interface MessageProtoMsg {
+  typeUrl: "/assetmantle.modules.orders.transactions.make.Message";
+  value: Uint8Array;
+}
+export interface MessageAmino {
+  from: string;
+  from_i_d?: IdentityIDAmino;
+  classification_i_d?: ClassificationIDAmino;
+  taker_i_d?: IdentityIDAmino;
+  maker_ownable_i_d?: AnyOwnableIDAmino;
+  taker_ownable_i_d?: AnyOwnableIDAmino;
+  expires_in?: HeightAmino;
+  maker_ownable_split: string;
+  taker_ownable_split: string;
+  immutable_meta_properties?: PropertyListAmino;
+  immutable_properties?: PropertyListAmino;
+  mutable_meta_properties?: PropertyListAmino;
+  mutable_properties?: PropertyListAmino;
+}
+export interface MessageAminoMsg {
+  type: "/assetmantle.modules.orders.transactions.make.Message";
+  value: MessageAmino;
 }
 export interface MessageSDKType {
   from: string;
@@ -198,5 +221,54 @@ export const Message = {
     message.mutableMetaProperties = object.mutableMetaProperties !== undefined && object.mutableMetaProperties !== null ? PropertyList.fromPartial(object.mutableMetaProperties) : undefined;
     message.mutableProperties = object.mutableProperties !== undefined && object.mutableProperties !== null ? PropertyList.fromPartial(object.mutableProperties) : undefined;
     return message;
+  },
+  fromAmino(object: MessageAmino): Message {
+    return {
+      from: object.from,
+      fromID: object?.from_i_d ? IdentityID.fromAmino(object.from_i_d) : undefined,
+      classificationID: object?.classification_i_d ? ClassificationID.fromAmino(object.classification_i_d) : undefined,
+      takerID: object?.taker_i_d ? IdentityID.fromAmino(object.taker_i_d) : undefined,
+      makerOwnableID: object?.maker_ownable_i_d ? AnyOwnableID.fromAmino(object.maker_ownable_i_d) : undefined,
+      takerOwnableID: object?.taker_ownable_i_d ? AnyOwnableID.fromAmino(object.taker_ownable_i_d) : undefined,
+      expiresIn: object?.expires_in ? Height.fromAmino(object.expires_in) : undefined,
+      makerOwnableSplit: object.maker_ownable_split,
+      takerOwnableSplit: object.taker_ownable_split,
+      immutableMetaProperties: object?.immutable_meta_properties ? PropertyList.fromAmino(object.immutable_meta_properties) : undefined,
+      immutableProperties: object?.immutable_properties ? PropertyList.fromAmino(object.immutable_properties) : undefined,
+      mutableMetaProperties: object?.mutable_meta_properties ? PropertyList.fromAmino(object.mutable_meta_properties) : undefined,
+      mutableProperties: object?.mutable_properties ? PropertyList.fromAmino(object.mutable_properties) : undefined
+    };
+  },
+  toAmino(message: Message): MessageAmino {
+    const obj: any = {};
+    obj.from = message.from;
+    obj.from_i_d = message.fromID ? IdentityID.toAmino(message.fromID) : undefined;
+    obj.classification_i_d = message.classificationID ? ClassificationID.toAmino(message.classificationID) : undefined;
+    obj.taker_i_d = message.takerID ? IdentityID.toAmino(message.takerID) : undefined;
+    obj.maker_ownable_i_d = message.makerOwnableID ? AnyOwnableID.toAmino(message.makerOwnableID) : undefined;
+    obj.taker_ownable_i_d = message.takerOwnableID ? AnyOwnableID.toAmino(message.takerOwnableID) : undefined;
+    obj.expires_in = message.expiresIn ? Height.toAmino(message.expiresIn) : undefined;
+    obj.maker_ownable_split = message.makerOwnableSplit;
+    obj.taker_ownable_split = message.takerOwnableSplit;
+    obj.immutable_meta_properties = message.immutableMetaProperties ? PropertyList.toAmino(message.immutableMetaProperties) : undefined;
+    obj.immutable_properties = message.immutableProperties ? PropertyList.toAmino(message.immutableProperties) : undefined;
+    obj.mutable_meta_properties = message.mutableMetaProperties ? PropertyList.toAmino(message.mutableMetaProperties) : undefined;
+    obj.mutable_properties = message.mutableProperties ? PropertyList.toAmino(message.mutableProperties) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MessageAminoMsg): Message {
+    return Message.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MessageProtoMsg): Message {
+    return Message.decode(message.value);
+  },
+  toProto(message: Message): Uint8Array {
+    return Message.encode(message).finish();
+  },
+  toProtoMsg(message: Message): MessageProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.orders.transactions.make.Message",
+      value: Message.encode(message).finish()
+    };
   }
 };

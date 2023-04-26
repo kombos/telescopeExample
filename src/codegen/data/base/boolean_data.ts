@@ -3,6 +3,17 @@ import { isSet } from "../../helpers";
 export interface BooleanData {
   value: boolean;
 }
+export interface BooleanDataProtoMsg {
+  typeUrl: "/assetmantle.schema.data.base.BooleanData";
+  value: Uint8Array;
+}
+export interface BooleanDataAmino {
+  value: boolean;
+}
+export interface BooleanDataAminoMsg {
+  type: "/assetmantle.schema.data.base.BooleanData";
+  value: BooleanDataAmino;
+}
 export interface BooleanDataSDKType {
   value: boolean;
 }
@@ -49,5 +60,30 @@ export const BooleanData = {
     const message = createBaseBooleanData();
     message.value = object.value ?? false;
     return message;
+  },
+  fromAmino(object: BooleanDataAmino): BooleanData {
+    return {
+      value: object.value
+    };
+  },
+  toAmino(message: BooleanData): BooleanDataAmino {
+    const obj: any = {};
+    obj.value = message.value;
+    return obj;
+  },
+  fromAminoMsg(object: BooleanDataAminoMsg): BooleanData {
+    return BooleanData.fromAmino(object.value);
+  },
+  fromProtoMsg(message: BooleanDataProtoMsg): BooleanData {
+    return BooleanData.decode(message.value);
+  },
+  toProto(message: BooleanData): Uint8Array {
+    return BooleanData.encode(message).finish();
+  },
+  toProtoMsg(message: BooleanData): BooleanDataProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.data.base.BooleanData",
+      value: BooleanData.encode(message).finish()
+    };
   }
 };

@@ -1,7 +1,18 @@
-import { Mappable, MappableSDKType } from "../../mappable/mappable";
+import { Mappable, MappableAmino, MappableSDKType } from "../../mappable/mappable";
 import * as _m0 from "protobufjs/minimal";
 export interface QueryResponse {
   list: Mappable[];
+}
+export interface QueryResponseProtoMsg {
+  typeUrl: "/assetmantle.modules.assets.queries.assets.QueryResponse";
+  value: Uint8Array;
+}
+export interface QueryResponseAmino {
+  list: MappableAmino[];
+}
+export interface QueryResponseAminoMsg {
+  type: "/assetmantle.modules.assets.queries.assets.QueryResponse";
+  value: QueryResponseAmino;
 }
 export interface QueryResponseSDKType {
   list: MappableSDKType[];
@@ -53,5 +64,34 @@ export const QueryResponse = {
     const message = createBaseQueryResponse();
     message.list = object.list?.map(e => Mappable.fromPartial(e)) || [];
     return message;
+  },
+  fromAmino(object: QueryResponseAmino): QueryResponse {
+    return {
+      list: Array.isArray(object?.list) ? object.list.map((e: any) => Mappable.fromAmino(e)) : []
+    };
+  },
+  toAmino(message: QueryResponse): QueryResponseAmino {
+    const obj: any = {};
+    if (message.list) {
+      obj.list = message.list.map(e => e ? Mappable.toAmino(e) : undefined);
+    } else {
+      obj.list = [];
+    }
+    return obj;
+  },
+  fromAminoMsg(object: QueryResponseAminoMsg): QueryResponse {
+    return QueryResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryResponseProtoMsg): QueryResponse {
+    return QueryResponse.decode(message.value);
+  },
+  toProto(message: QueryResponse): Uint8Array {
+    return QueryResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryResponse): QueryResponseProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.assets.queries.assets.QueryResponse",
+      value: QueryResponse.encode(message).finish()
+    };
   }
 };

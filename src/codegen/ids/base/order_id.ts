@@ -1,8 +1,19 @@
-import { HashID, HashIDSDKType } from "./hash_id";
+import { HashID, HashIDAmino, HashIDSDKType } from "./hash_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface OrderID {
   hashID?: HashID;
+}
+export interface OrderIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.OrderID";
+  value: Uint8Array;
+}
+export interface OrderIDAmino {
+  hash_i_d?: HashIDAmino;
+}
+export interface OrderIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.OrderID";
+  value: OrderIDAmino;
 }
 export interface OrderIDSDKType {
   hash_i_d?: HashIDSDKType;
@@ -50,5 +61,30 @@ export const OrderID = {
     const message = createBaseOrderID();
     message.hashID = object.hashID !== undefined && object.hashID !== null ? HashID.fromPartial(object.hashID) : undefined;
     return message;
+  },
+  fromAmino(object: OrderIDAmino): OrderID {
+    return {
+      hashID: object?.hash_i_d ? HashID.fromAmino(object.hash_i_d) : undefined
+    };
+  },
+  toAmino(message: OrderID): OrderIDAmino {
+    const obj: any = {};
+    obj.hash_i_d = message.hashID ? HashID.toAmino(message.hashID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: OrderIDAminoMsg): OrderID {
+    return OrderID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: OrderIDProtoMsg): OrderID {
+    return OrderID.decode(message.value);
+  },
+  toProto(message: OrderID): Uint8Array {
+    return OrderID.encode(message).finish();
+  },
+  toProtoMsg(message: OrderID): OrderIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.OrderID",
+      value: OrderID.encode(message).finish()
+    };
   }
 };

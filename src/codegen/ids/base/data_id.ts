@@ -1,10 +1,22 @@
-import { StringID, StringIDSDKType } from "./string_id";
-import { HashID, HashIDSDKType } from "./hash_id";
+import { StringID, StringIDAmino, StringIDSDKType } from "./string_id";
+import { HashID, HashIDAmino, HashIDSDKType } from "./hash_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface DataID {
   typeID?: StringID;
   hashID?: HashID;
+}
+export interface DataIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.DataID";
+  value: Uint8Array;
+}
+export interface DataIDAmino {
+  type_i_d?: StringIDAmino;
+  hash_i_d?: HashIDAmino;
+}
+export interface DataIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.DataID";
+  value: DataIDAmino;
 }
 export interface DataIDSDKType {
   type_i_d?: StringIDSDKType;
@@ -63,5 +75,32 @@ export const DataID = {
     message.typeID = object.typeID !== undefined && object.typeID !== null ? StringID.fromPartial(object.typeID) : undefined;
     message.hashID = object.hashID !== undefined && object.hashID !== null ? HashID.fromPartial(object.hashID) : undefined;
     return message;
+  },
+  fromAmino(object: DataIDAmino): DataID {
+    return {
+      typeID: object?.type_i_d ? StringID.fromAmino(object.type_i_d) : undefined,
+      hashID: object?.hash_i_d ? HashID.fromAmino(object.hash_i_d) : undefined
+    };
+  },
+  toAmino(message: DataID): DataIDAmino {
+    const obj: any = {};
+    obj.type_i_d = message.typeID ? StringID.toAmino(message.typeID) : undefined;
+    obj.hash_i_d = message.hashID ? HashID.toAmino(message.hashID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: DataIDAminoMsg): DataID {
+    return DataID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DataIDProtoMsg): DataID {
+    return DataID.decode(message.value);
+  },
+  toProto(message: DataID): Uint8Array {
+    return DataID.encode(message).finish();
+  },
+  toProtoMsg(message: DataID): DataIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.DataID",
+      value: DataID.encode(message).finish()
+    };
   }
 };

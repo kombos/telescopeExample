@@ -1,8 +1,19 @@
-import { AnyOwnableID, AnyOwnableIDSDKType } from "../../../ids/base/any_ownable_id";
+import { AnyOwnableID, AnyOwnableIDAmino, AnyOwnableIDSDKType } from "../../../ids/base/any_ownable_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface QueryRequest {
   ownableID?: AnyOwnableID;
+}
+export interface QueryRequestProtoMsg {
+  typeUrl: "/assetmantle.modules.splits.queries.ownable.QueryRequest";
+  value: Uint8Array;
+}
+export interface QueryRequestAmino {
+  ownable_i_d?: AnyOwnableIDAmino;
+}
+export interface QueryRequestAminoMsg {
+  type: "/assetmantle.modules.splits.queries.ownable.QueryRequest";
+  value: QueryRequestAmino;
 }
 export interface QueryRequestSDKType {
   ownable_i_d?: AnyOwnableIDSDKType;
@@ -50,5 +61,30 @@ export const QueryRequest = {
     const message = createBaseQueryRequest();
     message.ownableID = object.ownableID !== undefined && object.ownableID !== null ? AnyOwnableID.fromPartial(object.ownableID) : undefined;
     return message;
+  },
+  fromAmino(object: QueryRequestAmino): QueryRequest {
+    return {
+      ownableID: object?.ownable_i_d ? AnyOwnableID.fromAmino(object.ownable_i_d) : undefined
+    };
+  },
+  toAmino(message: QueryRequest): QueryRequestAmino {
+    const obj: any = {};
+    obj.ownable_i_d = message.ownableID ? AnyOwnableID.toAmino(message.ownableID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryRequestAminoMsg): QueryRequest {
+    return QueryRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryRequestProtoMsg): QueryRequest {
+    return QueryRequest.decode(message.value);
+  },
+  toProto(message: QueryRequest): Uint8Array {
+    return QueryRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryRequest): QueryRequestProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.splits.queries.ownable.QueryRequest",
+      value: QueryRequest.encode(message).finish()
+    };
   }
 };

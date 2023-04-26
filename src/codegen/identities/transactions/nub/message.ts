@@ -1,9 +1,21 @@
-import { StringID, StringIDSDKType } from "../../../ids/base/string_id";
+import { StringID, StringIDAmino, StringIDSDKType } from "../../../ids/base/string_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface Message {
   from: string;
   nubID?: StringID;
+}
+export interface MessageProtoMsg {
+  typeUrl: "/assetmantle.modules.identities.transactions.nub.Message";
+  value: Uint8Array;
+}
+export interface MessageAmino {
+  from: string;
+  nub_i_d?: StringIDAmino;
+}
+export interface MessageAminoMsg {
+  type: "/assetmantle.modules.identities.transactions.nub.Message";
+  value: MessageAmino;
 }
 export interface MessageSDKType {
   from: string;
@@ -62,5 +74,32 @@ export const Message = {
     message.from = object.from ?? "";
     message.nubID = object.nubID !== undefined && object.nubID !== null ? StringID.fromPartial(object.nubID) : undefined;
     return message;
+  },
+  fromAmino(object: MessageAmino): Message {
+    return {
+      from: object.from,
+      nubID: object?.nub_i_d ? StringID.fromAmino(object.nub_i_d) : undefined
+    };
+  },
+  toAmino(message: Message): MessageAmino {
+    const obj: any = {};
+    obj.from = message.from;
+    obj.nub_i_d = message.nubID ? StringID.toAmino(message.nubID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MessageAminoMsg): Message {
+    return Message.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MessageProtoMsg): Message {
+    return Message.decode(message.value);
+  },
+  toProto(message: Message): Uint8Array {
+    return Message.encode(message).finish();
+  },
+  toProtoMsg(message: Message): MessageProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.identities.transactions.nub.Message",
+      value: Message.encode(message).finish()
+    };
   }
 };

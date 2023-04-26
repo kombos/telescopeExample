@@ -1,9 +1,21 @@
-import { AnyData, AnyDataSDKType } from "../../../data/base/any_data";
+import { AnyData, AnyDataAmino, AnyDataSDKType } from "../../../data/base/any_data";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface Message {
   from: string;
   data?: AnyData;
+}
+export interface MessageProtoMsg {
+  typeUrl: "/assetmantle.modules.metas.transactions.reveal.Message";
+  value: Uint8Array;
+}
+export interface MessageAmino {
+  from: string;
+  data?: AnyDataAmino;
+}
+export interface MessageAminoMsg {
+  type: "/assetmantle.modules.metas.transactions.reveal.Message";
+  value: MessageAmino;
 }
 export interface MessageSDKType {
   from: string;
@@ -62,5 +74,32 @@ export const Message = {
     message.from = object.from ?? "";
     message.data = object.data !== undefined && object.data !== null ? AnyData.fromPartial(object.data) : undefined;
     return message;
+  },
+  fromAmino(object: MessageAmino): Message {
+    return {
+      from: object.from,
+      data: object?.data ? AnyData.fromAmino(object.data) : undefined
+    };
+  },
+  toAmino(message: Message): MessageAmino {
+    const obj: any = {};
+    obj.from = message.from;
+    obj.data = message.data ? AnyData.toAmino(message.data) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MessageAminoMsg): Message {
+    return Message.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MessageProtoMsg): Message {
+    return Message.decode(message.value);
+  },
+  toProto(message: Message): Uint8Array {
+    return Message.encode(message).finish();
+  },
+  toProtoMsg(message: Message): MessageProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.metas.transactions.reveal.Message",
+      value: Message.encode(message).finish()
+    };
   }
 };

@@ -1,8 +1,19 @@
-import { AssetID, AssetIDSDKType } from "../../../ids/base/asset_id";
+import { AssetID, AssetIDAmino, AssetIDSDKType } from "../../../ids/base/asset_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface QueryRequest {
   assetID?: AssetID;
+}
+export interface QueryRequestProtoMsg {
+  typeUrl: "/assetmantle.modules.assets.queries.asset.QueryRequest";
+  value: Uint8Array;
+}
+export interface QueryRequestAmino {
+  asset_i_d?: AssetIDAmino;
+}
+export interface QueryRequestAminoMsg {
+  type: "/assetmantle.modules.assets.queries.asset.QueryRequest";
+  value: QueryRequestAmino;
 }
 export interface QueryRequestSDKType {
   asset_i_d?: AssetIDSDKType;
@@ -50,5 +61,30 @@ export const QueryRequest = {
     const message = createBaseQueryRequest();
     message.assetID = object.assetID !== undefined && object.assetID !== null ? AssetID.fromPartial(object.assetID) : undefined;
     return message;
+  },
+  fromAmino(object: QueryRequestAmino): QueryRequest {
+    return {
+      assetID: object?.asset_i_d ? AssetID.fromAmino(object.asset_i_d) : undefined
+    };
+  },
+  toAmino(message: QueryRequest): QueryRequestAmino {
+    const obj: any = {};
+    obj.asset_i_d = message.assetID ? AssetID.toAmino(message.assetID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryRequestAminoMsg): QueryRequest {
+    return QueryRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryRequestProtoMsg): QueryRequest {
+    return QueryRequest.decode(message.value);
+  },
+  toProto(message: QueryRequest): Uint8Array {
+    return QueryRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryRequest): QueryRequestProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.assets.queries.asset.QueryRequest",
+      value: QueryRequest.encode(message).finish()
+    };
   }
 };

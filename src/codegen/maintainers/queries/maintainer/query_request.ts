@@ -1,8 +1,19 @@
-import { MaintainerID, MaintainerIDSDKType } from "../../../ids/base/maintainer_id";
+import { MaintainerID, MaintainerIDAmino, MaintainerIDSDKType } from "../../../ids/base/maintainer_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface QueryRequest {
   maintainerID?: MaintainerID;
+}
+export interface QueryRequestProtoMsg {
+  typeUrl: "/assetmantle.modules.maintainers.queries.maintainer.QueryRequest";
+  value: Uint8Array;
+}
+export interface QueryRequestAmino {
+  maintainer_i_d?: MaintainerIDAmino;
+}
+export interface QueryRequestAminoMsg {
+  type: "/assetmantle.modules.maintainers.queries.maintainer.QueryRequest";
+  value: QueryRequestAmino;
 }
 export interface QueryRequestSDKType {
   maintainer_i_d?: MaintainerIDSDKType;
@@ -50,5 +61,30 @@ export const QueryRequest = {
     const message = createBaseQueryRequest();
     message.maintainerID = object.maintainerID !== undefined && object.maintainerID !== null ? MaintainerID.fromPartial(object.maintainerID) : undefined;
     return message;
+  },
+  fromAmino(object: QueryRequestAmino): QueryRequest {
+    return {
+      maintainerID: object?.maintainer_i_d ? MaintainerID.fromAmino(object.maintainer_i_d) : undefined
+    };
+  },
+  toAmino(message: QueryRequest): QueryRequestAmino {
+    const obj: any = {};
+    obj.maintainer_i_d = message.maintainerID ? MaintainerID.toAmino(message.maintainerID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryRequestAminoMsg): QueryRequest {
+    return QueryRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryRequestProtoMsg): QueryRequest {
+    return QueryRequest.decode(message.value);
+  },
+  toProto(message: QueryRequest): Uint8Array {
+    return QueryRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryRequest): QueryRequestProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.maintainers.queries.maintainer.QueryRequest",
+      value: QueryRequest.encode(message).finish()
+    };
   }
 };

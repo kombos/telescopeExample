@@ -5,6 +5,19 @@ export interface QueryResponse {
   error: string;
   value: string;
 }
+export interface QueryResponseProtoMsg {
+  typeUrl: "/assetmantle.modules.splits.queries.ownable.QueryResponse";
+  value: Uint8Array;
+}
+export interface QueryResponseAmino {
+  success: boolean;
+  error: string;
+  value: string;
+}
+export interface QueryResponseAminoMsg {
+  type: "/assetmantle.modules.splits.queries.ownable.QueryResponse";
+  value: QueryResponseAmino;
+}
 export interface QueryResponseSDKType {
   success: boolean;
   error: string;
@@ -73,5 +86,34 @@ export const QueryResponse = {
     message.error = object.error ?? "";
     message.value = object.value ?? "";
     return message;
+  },
+  fromAmino(object: QueryResponseAmino): QueryResponse {
+    return {
+      success: object.success,
+      error: object.error,
+      value: object.value
+    };
+  },
+  toAmino(message: QueryResponse): QueryResponseAmino {
+    const obj: any = {};
+    obj.success = message.success;
+    obj.error = message.error;
+    obj.value = message.value;
+    return obj;
+  },
+  fromAminoMsg(object: QueryResponseAminoMsg): QueryResponse {
+    return QueryResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryResponseProtoMsg): QueryResponse {
+    return QueryResponse.decode(message.value);
+  },
+  toProto(message: QueryResponse): Uint8Array {
+    return QueryResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryResponse): QueryResponseProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.splits.queries.ownable.QueryResponse",
+      value: QueryResponse.encode(message).finish()
+    };
   }
 };

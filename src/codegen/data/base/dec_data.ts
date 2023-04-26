@@ -3,6 +3,17 @@ import { isSet } from "../../helpers";
 export interface DecData {
   value: string;
 }
+export interface DecDataProtoMsg {
+  typeUrl: "/assetmantle.schema.data.base.DecData";
+  value: Uint8Array;
+}
+export interface DecDataAmino {
+  value: string;
+}
+export interface DecDataAminoMsg {
+  type: "/assetmantle.schema.data.base.DecData";
+  value: DecDataAmino;
+}
 export interface DecDataSDKType {
   value: string;
 }
@@ -49,5 +60,30 @@ export const DecData = {
     const message = createBaseDecData();
     message.value = object.value ?? "";
     return message;
+  },
+  fromAmino(object: DecDataAmino): DecData {
+    return {
+      value: object.value
+    };
+  },
+  toAmino(message: DecData): DecDataAmino {
+    const obj: any = {};
+    obj.value = message.value;
+    return obj;
+  },
+  fromAminoMsg(object: DecDataAminoMsg): DecData {
+    return DecData.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DecDataProtoMsg): DecData {
+    return DecData.decode(message.value);
+  },
+  toProto(message: DecData): Uint8Array {
+    return DecData.encode(message).finish();
+  },
+  toProtoMsg(message: DecData): DecDataProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.data.base.DecData",
+      value: DecData.encode(message).finish()
+    };
   }
 };

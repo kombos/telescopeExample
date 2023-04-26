@@ -3,6 +3,17 @@ import { isSet } from "../../../helpers";
 export interface TransactionResponse {
   identityID: string;
 }
+export interface TransactionResponseProtoMsg {
+  typeUrl: "/assetmantle.modules.identities.transactions.issue.TransactionResponse";
+  value: Uint8Array;
+}
+export interface TransactionResponseAmino {
+  identity_i_d: string;
+}
+export interface TransactionResponseAminoMsg {
+  type: "/assetmantle.modules.identities.transactions.issue.TransactionResponse";
+  value: TransactionResponseAmino;
+}
 export interface TransactionResponseSDKType {
   identity_i_d: string;
 }
@@ -49,5 +60,30 @@ export const TransactionResponse = {
     const message = createBaseTransactionResponse();
     message.identityID = object.identityID ?? "";
     return message;
+  },
+  fromAmino(object: TransactionResponseAmino): TransactionResponse {
+    return {
+      identityID: object.identity_i_d
+    };
+  },
+  toAmino(message: TransactionResponse): TransactionResponseAmino {
+    const obj: any = {};
+    obj.identity_i_d = message.identityID;
+    return obj;
+  },
+  fromAminoMsg(object: TransactionResponseAminoMsg): TransactionResponse {
+    return TransactionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: TransactionResponseProtoMsg): TransactionResponse {
+    return TransactionResponse.decode(message.value);
+  },
+  toProto(message: TransactionResponse): Uint8Array {
+    return TransactionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: TransactionResponse): TransactionResponseProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.identities.transactions.issue.TransactionResponse",
+      value: TransactionResponse.encode(message).finish()
+    };
   }
 };

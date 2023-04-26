@@ -1,8 +1,19 @@
-import { Height, HeightSDKType } from "../../types/base/height";
+import { Height, HeightAmino, HeightSDKType } from "../../types/base/height";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface HeightData {
   value?: Height;
+}
+export interface HeightDataProtoMsg {
+  typeUrl: "/assetmantle.schema.data.base.HeightData";
+  value: Uint8Array;
+}
+export interface HeightDataAmino {
+  value?: HeightAmino;
+}
+export interface HeightDataAminoMsg {
+  type: "/assetmantle.schema.data.base.HeightData";
+  value: HeightDataAmino;
 }
 export interface HeightDataSDKType {
   value?: HeightSDKType;
@@ -50,5 +61,30 @@ export const HeightData = {
     const message = createBaseHeightData();
     message.value = object.value !== undefined && object.value !== null ? Height.fromPartial(object.value) : undefined;
     return message;
+  },
+  fromAmino(object: HeightDataAmino): HeightData {
+    return {
+      value: object?.value ? Height.fromAmino(object.value) : undefined
+    };
+  },
+  toAmino(message: HeightData): HeightDataAmino {
+    const obj: any = {};
+    obj.value = message.value ? Height.toAmino(message.value) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: HeightDataAminoMsg): HeightData {
+    return HeightData.fromAmino(object.value);
+  },
+  fromProtoMsg(message: HeightDataProtoMsg): HeightData {
+    return HeightData.decode(message.value);
+  },
+  toProto(message: HeightData): Uint8Array {
+    return HeightData.encode(message).finish();
+  },
+  toProtoMsg(message: HeightData): HeightDataProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.data.base.HeightData",
+      value: HeightData.encode(message).finish()
+    };
   }
 };

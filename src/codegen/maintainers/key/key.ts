@@ -1,8 +1,19 @@
-import { MaintainerID, MaintainerIDSDKType } from "../../ids/base/maintainer_id";
+import { MaintainerID, MaintainerIDAmino, MaintainerIDSDKType } from "../../ids/base/maintainer_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Key {
   maintainerID?: MaintainerID;
+}
+export interface KeyProtoMsg {
+  typeUrl: "/assetmantle.modules.maintainers.key.Key";
+  value: Uint8Array;
+}
+export interface KeyAmino {
+  maintainer_i_d?: MaintainerIDAmino;
+}
+export interface KeyAminoMsg {
+  type: "/assetmantle.modules.maintainers.key.Key";
+  value: KeyAmino;
 }
 export interface KeySDKType {
   maintainer_i_d?: MaintainerIDSDKType;
@@ -50,5 +61,30 @@ export const Key = {
     const message = createBaseKey();
     message.maintainerID = object.maintainerID !== undefined && object.maintainerID !== null ? MaintainerID.fromPartial(object.maintainerID) : undefined;
     return message;
+  },
+  fromAmino(object: KeyAmino): Key {
+    return {
+      maintainerID: object?.maintainer_i_d ? MaintainerID.fromAmino(object.maintainer_i_d) : undefined
+    };
+  },
+  toAmino(message: Key): KeyAmino {
+    const obj: any = {};
+    obj.maintainer_i_d = message.maintainerID ? MaintainerID.toAmino(message.maintainerID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: KeyAminoMsg): Key {
+    return Key.fromAmino(object.value);
+  },
+  fromProtoMsg(message: KeyProtoMsg): Key {
+    return Key.decode(message.value);
+  },
+  toProto(message: Key): Uint8Array {
+    return Key.encode(message).finish();
+  },
+  toProtoMsg(message: Key): KeyProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.maintainers.key.Key",
+      value: Key.encode(message).finish()
+    };
   }
 };

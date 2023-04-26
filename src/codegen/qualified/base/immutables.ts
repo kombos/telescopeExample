@@ -1,8 +1,19 @@
-import { PropertyList, PropertyListSDKType } from "../../lists/base/property_list";
+import { PropertyList, PropertyListAmino, PropertyListSDKType } from "../../lists/base/property_list";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Immutables {
   propertyList?: PropertyList;
+}
+export interface ImmutablesProtoMsg {
+  typeUrl: "/assetmantle.schema.qualified.base.Immutables";
+  value: Uint8Array;
+}
+export interface ImmutablesAmino {
+  property_list?: PropertyListAmino;
+}
+export interface ImmutablesAminoMsg {
+  type: "/assetmantle.schema.qualified.base.Immutables";
+  value: ImmutablesAmino;
 }
 export interface ImmutablesSDKType {
   property_list?: PropertyListSDKType;
@@ -50,5 +61,30 @@ export const Immutables = {
     const message = createBaseImmutables();
     message.propertyList = object.propertyList !== undefined && object.propertyList !== null ? PropertyList.fromPartial(object.propertyList) : undefined;
     return message;
+  },
+  fromAmino(object: ImmutablesAmino): Immutables {
+    return {
+      propertyList: object?.property_list ? PropertyList.fromAmino(object.property_list) : undefined
+    };
+  },
+  toAmino(message: Immutables): ImmutablesAmino {
+    const obj: any = {};
+    obj.property_list = message.propertyList ? PropertyList.toAmino(message.propertyList) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: ImmutablesAminoMsg): Immutables {
+    return Immutables.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ImmutablesProtoMsg): Immutables {
+    return Immutables.decode(message.value);
+  },
+  toProto(message: Immutables): Uint8Array {
+    return Immutables.encode(message).finish();
+  },
+  toProtoMsg(message: Immutables): ImmutablesProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.qualified.base.Immutables",
+      value: Immutables.encode(message).finish()
+    };
   }
 };

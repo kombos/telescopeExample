@@ -1,8 +1,19 @@
-import { AssetID, AssetIDSDKType } from "../../ids/base/asset_id";
+import { AssetID, AssetIDAmino, AssetIDSDKType } from "../../ids/base/asset_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Key {
   assetID?: AssetID;
+}
+export interface KeyProtoMsg {
+  typeUrl: "/assetmantle.modules.assets.key.Key";
+  value: Uint8Array;
+}
+export interface KeyAmino {
+  asset_i_d?: AssetIDAmino;
+}
+export interface KeyAminoMsg {
+  type: "/assetmantle.modules.assets.key.Key";
+  value: KeyAmino;
 }
 export interface KeySDKType {
   asset_i_d?: AssetIDSDKType;
@@ -50,5 +61,30 @@ export const Key = {
     const message = createBaseKey();
     message.assetID = object.assetID !== undefined && object.assetID !== null ? AssetID.fromPartial(object.assetID) : undefined;
     return message;
+  },
+  fromAmino(object: KeyAmino): Key {
+    return {
+      assetID: object?.asset_i_d ? AssetID.fromAmino(object.asset_i_d) : undefined
+    };
+  },
+  toAmino(message: Key): KeyAmino {
+    const obj: any = {};
+    obj.asset_i_d = message.assetID ? AssetID.toAmino(message.assetID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: KeyAminoMsg): Key {
+    return Key.fromAmino(object.value);
+  },
+  fromProtoMsg(message: KeyProtoMsg): Key {
+    return Key.decode(message.value);
+  },
+  toProto(message: Key): Uint8Array {
+    return Key.encode(message).finish();
+  },
+  toProtoMsg(message: Key): KeyProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.assets.key.Key",
+      value: Key.encode(message).finish()
+    };
   }
 };

@@ -1,8 +1,19 @@
-import { IdentityID, IdentityIDSDKType } from "../../ids/base/identity_id";
+import { IdentityID, IdentityIDAmino, IdentityIDSDKType } from "../../ids/base/identity_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Key {
   identityID?: IdentityID;
+}
+export interface KeyProtoMsg {
+  typeUrl: "/assetmantle.modules.identities.key.Key";
+  value: Uint8Array;
+}
+export interface KeyAmino {
+  identity_i_d?: IdentityIDAmino;
+}
+export interface KeyAminoMsg {
+  type: "/assetmantle.modules.identities.key.Key";
+  value: KeyAmino;
 }
 export interface KeySDKType {
   identity_i_d?: IdentityIDSDKType;
@@ -50,5 +61,30 @@ export const Key = {
     const message = createBaseKey();
     message.identityID = object.identityID !== undefined && object.identityID !== null ? IdentityID.fromPartial(object.identityID) : undefined;
     return message;
+  },
+  fromAmino(object: KeyAmino): Key {
+    return {
+      identityID: object?.identity_i_d ? IdentityID.fromAmino(object.identity_i_d) : undefined
+    };
+  },
+  toAmino(message: Key): KeyAmino {
+    const obj: any = {};
+    obj.identity_i_d = message.identityID ? IdentityID.toAmino(message.identityID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: KeyAminoMsg): Key {
+    return Key.fromAmino(object.value);
+  },
+  fromProtoMsg(message: KeyProtoMsg): Key {
+    return Key.decode(message.value);
+  },
+  toProto(message: Key): Uint8Array {
+    return Key.encode(message).finish();
+  },
+  toProtoMsg(message: Key): KeyProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.identities.key.Key",
+      value: Key.encode(message).finish()
+    };
   }
 };

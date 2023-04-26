@@ -1,5 +1,5 @@
-import { IdentityID, IdentityIDSDKType } from "../../../ids/base/identity_id";
-import { PropertyList, PropertyListSDKType } from "../../../lists/base/property_list";
+import { IdentityID, IdentityIDAmino, IdentityIDSDKType } from "../../../ids/base/identity_id";
+import { PropertyList, PropertyListAmino, PropertyListSDKType } from "../../../lists/base/property_list";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface Message {
@@ -8,6 +8,21 @@ export interface Message {
   identityID?: IdentityID;
   mutableMetaProperties?: PropertyList;
   mutableProperties?: PropertyList;
+}
+export interface MessageProtoMsg {
+  typeUrl: "/assetmantle.modules.identities.transactions.mutate.Message";
+  value: Uint8Array;
+}
+export interface MessageAmino {
+  from: string;
+  from_i_d?: IdentityIDAmino;
+  identity_i_d?: IdentityIDAmino;
+  mutable_meta_properties?: PropertyListAmino;
+  mutable_properties?: PropertyListAmino;
+}
+export interface MessageAminoMsg {
+  type: "/assetmantle.modules.identities.transactions.mutate.Message";
+  value: MessageAmino;
 }
 export interface MessageSDKType {
   from: string;
@@ -99,5 +114,38 @@ export const Message = {
     message.mutableMetaProperties = object.mutableMetaProperties !== undefined && object.mutableMetaProperties !== null ? PropertyList.fromPartial(object.mutableMetaProperties) : undefined;
     message.mutableProperties = object.mutableProperties !== undefined && object.mutableProperties !== null ? PropertyList.fromPartial(object.mutableProperties) : undefined;
     return message;
+  },
+  fromAmino(object: MessageAmino): Message {
+    return {
+      from: object.from,
+      fromID: object?.from_i_d ? IdentityID.fromAmino(object.from_i_d) : undefined,
+      identityID: object?.identity_i_d ? IdentityID.fromAmino(object.identity_i_d) : undefined,
+      mutableMetaProperties: object?.mutable_meta_properties ? PropertyList.fromAmino(object.mutable_meta_properties) : undefined,
+      mutableProperties: object?.mutable_properties ? PropertyList.fromAmino(object.mutable_properties) : undefined
+    };
+  },
+  toAmino(message: Message): MessageAmino {
+    const obj: any = {};
+    obj.from = message.from;
+    obj.from_i_d = message.fromID ? IdentityID.toAmino(message.fromID) : undefined;
+    obj.identity_i_d = message.identityID ? IdentityID.toAmino(message.identityID) : undefined;
+    obj.mutable_meta_properties = message.mutableMetaProperties ? PropertyList.toAmino(message.mutableMetaProperties) : undefined;
+    obj.mutable_properties = message.mutableProperties ? PropertyList.toAmino(message.mutableProperties) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MessageAminoMsg): Message {
+    return Message.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MessageProtoMsg): Message {
+    return Message.decode(message.value);
+  },
+  toProto(message: Message): Uint8Array {
+    return Message.encode(message).finish();
+  },
+  toProtoMsg(message: Message): MessageProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.identities.transactions.mutate.Message",
+      value: Message.encode(message).finish()
+    };
   }
 };

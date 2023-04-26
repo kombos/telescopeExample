@@ -1,8 +1,19 @@
-import { PropertyList, PropertyListSDKType } from "../../lists/base/property_list";
+import { PropertyList, PropertyListAmino, PropertyListSDKType } from "../../lists/base/property_list";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Mutables {
   propertyList?: PropertyList;
+}
+export interface MutablesProtoMsg {
+  typeUrl: "/assetmantle.schema.qualified.base.Mutables";
+  value: Uint8Array;
+}
+export interface MutablesAmino {
+  property_list?: PropertyListAmino;
+}
+export interface MutablesAminoMsg {
+  type: "/assetmantle.schema.qualified.base.Mutables";
+  value: MutablesAmino;
 }
 export interface MutablesSDKType {
   property_list?: PropertyListSDKType;
@@ -50,5 +61,30 @@ export const Mutables = {
     const message = createBaseMutables();
     message.propertyList = object.propertyList !== undefined && object.propertyList !== null ? PropertyList.fromPartial(object.propertyList) : undefined;
     return message;
+  },
+  fromAmino(object: MutablesAmino): Mutables {
+    return {
+      propertyList: object?.property_list ? PropertyList.fromAmino(object.property_list) : undefined
+    };
+  },
+  toAmino(message: Mutables): MutablesAmino {
+    const obj: any = {};
+    obj.property_list = message.propertyList ? PropertyList.toAmino(message.propertyList) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MutablesAminoMsg): Mutables {
+    return Mutables.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MutablesProtoMsg): Mutables {
+    return Mutables.decode(message.value);
+  },
+  toProto(message: Mutables): Uint8Array {
+    return Mutables.encode(message).finish();
+  },
+  toProtoMsg(message: Mutables): MutablesProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.qualified.base.Mutables",
+      value: Mutables.encode(message).finish()
+    };
   }
 };

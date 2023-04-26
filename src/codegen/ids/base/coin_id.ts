@@ -1,8 +1,19 @@
-import { StringID, StringIDSDKType } from "./string_id";
+import { StringID, StringIDAmino, StringIDSDKType } from "./string_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface CoinID {
   stringID?: StringID;
+}
+export interface CoinIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.CoinID";
+  value: Uint8Array;
+}
+export interface CoinIDAmino {
+  string_i_d?: StringIDAmino;
+}
+export interface CoinIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.CoinID";
+  value: CoinIDAmino;
 }
 export interface CoinIDSDKType {
   string_i_d?: StringIDSDKType;
@@ -50,5 +61,30 @@ export const CoinID = {
     const message = createBaseCoinID();
     message.stringID = object.stringID !== undefined && object.stringID !== null ? StringID.fromPartial(object.stringID) : undefined;
     return message;
+  },
+  fromAmino(object: CoinIDAmino): CoinID {
+    return {
+      stringID: object?.string_i_d ? StringID.fromAmino(object.string_i_d) : undefined
+    };
+  },
+  toAmino(message: CoinID): CoinIDAmino {
+    const obj: any = {};
+    obj.string_i_d = message.stringID ? StringID.toAmino(message.stringID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: CoinIDAminoMsg): CoinID {
+    return CoinID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: CoinIDProtoMsg): CoinID {
+    return CoinID.decode(message.value);
+  },
+  toProto(message: CoinID): Uint8Array {
+    return CoinID.encode(message).finish();
+  },
+  toProtoMsg(message: CoinID): CoinIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.CoinID",
+      value: CoinID.encode(message).finish()
+    };
   }
 };

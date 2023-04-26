@@ -3,6 +3,17 @@ import { isSet } from "../../helpers";
 export interface StringID {
   iDString: string;
 }
+export interface StringIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.StringID";
+  value: Uint8Array;
+}
+export interface StringIDAmino {
+  i_d_string: string;
+}
+export interface StringIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.StringID";
+  value: StringIDAmino;
+}
 export interface StringIDSDKType {
   i_d_string: string;
 }
@@ -49,5 +60,30 @@ export const StringID = {
     const message = createBaseStringID();
     message.iDString = object.iDString ?? "";
     return message;
+  },
+  fromAmino(object: StringIDAmino): StringID {
+    return {
+      iDString: object.i_d_string
+    };
+  },
+  toAmino(message: StringID): StringIDAmino {
+    const obj: any = {};
+    obj.i_d_string = message.iDString;
+    return obj;
+  },
+  fromAminoMsg(object: StringIDAminoMsg): StringID {
+    return StringID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: StringIDProtoMsg): StringID {
+    return StringID.decode(message.value);
+  },
+  toProto(message: StringID): Uint8Array {
+    return StringID.encode(message).finish();
+  },
+  toProtoMsg(message: StringID): StringIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.StringID",
+      value: StringID.encode(message).finish()
+    };
   }
 };

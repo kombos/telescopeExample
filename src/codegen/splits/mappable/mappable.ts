@@ -1,8 +1,19 @@
-import { Split, SplitSDKType } from "../../types/base/split";
+import { Split, SplitAmino, SplitSDKType } from "../../types/base/split";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Mappable {
   split?: Split;
+}
+export interface MappableProtoMsg {
+  typeUrl: "/assetmantle.modules.splits.mappable.Mappable";
+  value: Uint8Array;
+}
+export interface MappableAmino {
+  split?: SplitAmino;
+}
+export interface MappableAminoMsg {
+  type: "/assetmantle.modules.splits.mappable.Mappable";
+  value: MappableAmino;
 }
 export interface MappableSDKType {
   split?: SplitSDKType;
@@ -50,5 +61,30 @@ export const Mappable = {
     const message = createBaseMappable();
     message.split = object.split !== undefined && object.split !== null ? Split.fromPartial(object.split) : undefined;
     return message;
+  },
+  fromAmino(object: MappableAmino): Mappable {
+    return {
+      split: object?.split ? Split.fromAmino(object.split) : undefined
+    };
+  },
+  toAmino(message: Mappable): MappableAmino {
+    const obj: any = {};
+    obj.split = message.split ? Split.toAmino(message.split) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MappableAminoMsg): Mappable {
+    return Mappable.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MappableProtoMsg): Mappable {
+    return Mappable.decode(message.value);
+  },
+  toProto(message: Mappable): Uint8Array {
+    return Mappable.encode(message).finish();
+  },
+  toProtoMsg(message: Mappable): MappableProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.splits.mappable.Mappable",
+      value: Mappable.encode(message).finish()
+    };
   }
 };

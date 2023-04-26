@@ -1,11 +1,24 @@
-import { IdentityID, IdentityIDSDKType } from "../../ids/base/identity_id";
-import { AnyOwnableID, AnyOwnableIDSDKType } from "../../ids/base/any_ownable_id";
+import { IdentityID, IdentityIDAmino, IdentityIDSDKType } from "../../ids/base/identity_id";
+import { AnyOwnableID, AnyOwnableIDAmino, AnyOwnableIDSDKType } from "../../ids/base/any_ownable_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Split {
   ownerID?: IdentityID;
   ownableID?: AnyOwnableID;
   value: string;
+}
+export interface SplitProtoMsg {
+  typeUrl: "/assetmantle.schema.types.base.Split";
+  value: Uint8Array;
+}
+export interface SplitAmino {
+  owner_i_d?: IdentityIDAmino;
+  ownable_i_d?: AnyOwnableIDAmino;
+  value: string;
+}
+export interface SplitAminoMsg {
+  type: "/assetmantle.schema.types.base.Split";
+  value: SplitAmino;
 }
 export interface SplitSDKType {
   owner_i_d?: IdentityIDSDKType;
@@ -75,5 +88,34 @@ export const Split = {
     message.ownableID = object.ownableID !== undefined && object.ownableID !== null ? AnyOwnableID.fromPartial(object.ownableID) : undefined;
     message.value = object.value ?? "";
     return message;
+  },
+  fromAmino(object: SplitAmino): Split {
+    return {
+      ownerID: object?.owner_i_d ? IdentityID.fromAmino(object.owner_i_d) : undefined,
+      ownableID: object?.ownable_i_d ? AnyOwnableID.fromAmino(object.ownable_i_d) : undefined,
+      value: object.value
+    };
+  },
+  toAmino(message: Split): SplitAmino {
+    const obj: any = {};
+    obj.owner_i_d = message.ownerID ? IdentityID.toAmino(message.ownerID) : undefined;
+    obj.ownable_i_d = message.ownableID ? AnyOwnableID.toAmino(message.ownableID) : undefined;
+    obj.value = message.value;
+    return obj;
+  },
+  fromAminoMsg(object: SplitAminoMsg): Split {
+    return Split.fromAmino(object.value);
+  },
+  fromProtoMsg(message: SplitProtoMsg): Split {
+    return Split.decode(message.value);
+  },
+  toProto(message: Split): Uint8Array {
+    return Split.encode(message).finish();
+  },
+  toProtoMsg(message: Split): SplitProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.types.base.Split",
+      value: Split.encode(message).finish()
+    };
   }
 };

@@ -1,8 +1,19 @@
-import { HashID, HashIDSDKType } from "./hash_id";
+import { HashID, HashIDAmino, HashIDSDKType } from "./hash_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface ClassificationID {
   hashID?: HashID;
+}
+export interface ClassificationIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.ClassificationID";
+  value: Uint8Array;
+}
+export interface ClassificationIDAmino {
+  hash_i_d?: HashIDAmino;
+}
+export interface ClassificationIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.ClassificationID";
+  value: ClassificationIDAmino;
 }
 export interface ClassificationIDSDKType {
   hash_i_d?: HashIDSDKType;
@@ -50,5 +61,30 @@ export const ClassificationID = {
     const message = createBaseClassificationID();
     message.hashID = object.hashID !== undefined && object.hashID !== null ? HashID.fromPartial(object.hashID) : undefined;
     return message;
+  },
+  fromAmino(object: ClassificationIDAmino): ClassificationID {
+    return {
+      hashID: object?.hash_i_d ? HashID.fromAmino(object.hash_i_d) : undefined
+    };
+  },
+  toAmino(message: ClassificationID): ClassificationIDAmino {
+    const obj: any = {};
+    obj.hash_i_d = message.hashID ? HashID.toAmino(message.hashID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: ClassificationIDAminoMsg): ClassificationID {
+    return ClassificationID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ClassificationIDProtoMsg): ClassificationID {
+    return ClassificationID.decode(message.value);
+  },
+  toProto(message: ClassificationID): Uint8Array {
+    return ClassificationID.encode(message).finish();
+  },
+  toProtoMsg(message: ClassificationID): ClassificationIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.ClassificationID",
+      value: ClassificationID.encode(message).finish()
+    };
   }
 };

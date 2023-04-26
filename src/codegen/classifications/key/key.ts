@@ -1,8 +1,19 @@
-import { ClassificationID, ClassificationIDSDKType } from "../../ids/base/classification_id";
+import { ClassificationID, ClassificationIDAmino, ClassificationIDSDKType } from "../../ids/base/classification_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Key {
   classificationID?: ClassificationID;
+}
+export interface KeyProtoMsg {
+  typeUrl: "/assetmantle.modules.classifications.key.Key";
+  value: Uint8Array;
+}
+export interface KeyAmino {
+  classification_i_d?: ClassificationIDAmino;
+}
+export interface KeyAminoMsg {
+  type: "/assetmantle.modules.classifications.key.Key";
+  value: KeyAmino;
 }
 export interface KeySDKType {
   classification_i_d?: ClassificationIDSDKType;
@@ -50,5 +61,30 @@ export const Key = {
     const message = createBaseKey();
     message.classificationID = object.classificationID !== undefined && object.classificationID !== null ? ClassificationID.fromPartial(object.classificationID) : undefined;
     return message;
+  },
+  fromAmino(object: KeyAmino): Key {
+    return {
+      classificationID: object?.classification_i_d ? ClassificationID.fromAmino(object.classification_i_d) : undefined
+    };
+  },
+  toAmino(message: Key): KeyAmino {
+    const obj: any = {};
+    obj.classification_i_d = message.classificationID ? ClassificationID.toAmino(message.classificationID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: KeyAminoMsg): Key {
+    return Key.fromAmino(object.value);
+  },
+  fromProtoMsg(message: KeyProtoMsg): Key {
+    return Key.decode(message.value);
+  },
+  toProto(message: Key): Uint8Array {
+    return Key.encode(message).finish();
+  },
+  toProtoMsg(message: Key): KeyProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.classifications.key.Key",
+      value: Key.encode(message).finish()
+    };
   }
 };

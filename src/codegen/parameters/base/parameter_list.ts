@@ -1,7 +1,18 @@
-import { Parameter, ParameterSDKType } from "./parameter";
+import { Parameter, ParameterAmino, ParameterSDKType } from "./parameter";
 import * as _m0 from "protobufjs/minimal";
 export interface ParameterList {
   parameters: Parameter[];
+}
+export interface ParameterListProtoMsg {
+  typeUrl: "/assetmantle.schema.parameters.base.ParameterList";
+  value: Uint8Array;
+}
+export interface ParameterListAmino {
+  parameters: ParameterAmino[];
+}
+export interface ParameterListAminoMsg {
+  type: "/assetmantle.schema.parameters.base.ParameterList";
+  value: ParameterListAmino;
 }
 export interface ParameterListSDKType {
   parameters: ParameterSDKType[];
@@ -53,5 +64,34 @@ export const ParameterList = {
     const message = createBaseParameterList();
     message.parameters = object.parameters?.map(e => Parameter.fromPartial(e)) || [];
     return message;
+  },
+  fromAmino(object: ParameterListAmino): ParameterList {
+    return {
+      parameters: Array.isArray(object?.parameters) ? object.parameters.map((e: any) => Parameter.fromAmino(e)) : []
+    };
+  },
+  toAmino(message: ParameterList): ParameterListAmino {
+    const obj: any = {};
+    if (message.parameters) {
+      obj.parameters = message.parameters.map(e => e ? Parameter.toAmino(e) : undefined);
+    } else {
+      obj.parameters = [];
+    }
+    return obj;
+  },
+  fromAminoMsg(object: ParameterListAminoMsg): ParameterList {
+    return ParameterList.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ParameterListProtoMsg): ParameterList {
+    return ParameterList.decode(message.value);
+  },
+  toProto(message: ParameterList): Uint8Array {
+    return ParameterList.encode(message).finish();
+  },
+  toProtoMsg(message: ParameterList): ParameterListProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.parameters.base.ParameterList",
+      value: ParameterList.encode(message).finish()
+    };
   }
 };
