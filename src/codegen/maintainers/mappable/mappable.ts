@@ -1,8 +1,19 @@
-import { Document, DocumentSDKType } from "../../documents/base/document";
+import { Document, DocumentAmino, DocumentSDKType } from "../../documents/base/document";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Mappable {
   maintainer?: Document;
+}
+export interface MappableProtoMsg {
+  typeUrl: "/assetmantle.modules.maintainers.mappable.Mappable";
+  value: Uint8Array;
+}
+export interface MappableAmino {
+  maintainer?: DocumentAmino;
+}
+export interface MappableAminoMsg {
+  type: "/assetmantle.modules.maintainers.mappable.Mappable";
+  value: MappableAmino;
 }
 export interface MappableSDKType {
   maintainer?: DocumentSDKType;
@@ -50,5 +61,30 @@ export const Mappable = {
     const message = createBaseMappable();
     message.maintainer = object.maintainer !== undefined && object.maintainer !== null ? Document.fromPartial(object.maintainer) : undefined;
     return message;
+  },
+  fromAmino(object: MappableAmino): Mappable {
+    return {
+      maintainer: object?.maintainer ? Document.fromAmino(object.maintainer) : undefined
+    };
+  },
+  toAmino(message: Mappable): MappableAmino {
+    const obj: any = {};
+    obj.maintainer = message.maintainer ? Document.toAmino(message.maintainer) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MappableAminoMsg): Mappable {
+    return Mappable.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MappableProtoMsg): Mappable {
+    return Mappable.decode(message.value);
+  },
+  toProto(message: Mappable): Uint8Array {
+    return Mappable.encode(message).finish();
+  },
+  toProtoMsg(message: Mappable): MappableProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.maintainers.mappable.Mappable",
+      value: Mappable.encode(message).finish()
+    };
   }
 };

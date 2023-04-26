@@ -1,10 +1,22 @@
-import { AssetID, AssetIDSDKType } from "./asset_id";
-import { CoinID, CoinIDSDKType } from "./coin_id";
+import { AssetID, AssetIDAmino, AssetIDSDKType } from "./asset_id";
+import { CoinID, CoinIDAmino, CoinIDSDKType } from "./coin_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface AnyOwnableID {
   assetID?: AssetID;
   coinID?: CoinID;
+}
+export interface AnyOwnableIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.AnyOwnableID";
+  value: Uint8Array;
+}
+export interface AnyOwnableIDAmino {
+  asset_i_d?: AssetIDAmino;
+  coin_i_d?: CoinIDAmino;
+}
+export interface AnyOwnableIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.AnyOwnableID";
+  value: AnyOwnableIDAmino;
 }
 export interface AnyOwnableIDSDKType {
   asset_i_d?: AssetIDSDKType;
@@ -63,5 +75,32 @@ export const AnyOwnableID = {
     message.assetID = object.assetID !== undefined && object.assetID !== null ? AssetID.fromPartial(object.assetID) : undefined;
     message.coinID = object.coinID !== undefined && object.coinID !== null ? CoinID.fromPartial(object.coinID) : undefined;
     return message;
+  },
+  fromAmino(object: AnyOwnableIDAmino): AnyOwnableID {
+    return {
+      assetID: object?.asset_i_d ? AssetID.fromAmino(object.asset_i_d) : undefined,
+      coinID: object?.coin_i_d ? CoinID.fromAmino(object.coin_i_d) : undefined
+    };
+  },
+  toAmino(message: AnyOwnableID): AnyOwnableIDAmino {
+    const obj: any = {};
+    obj.asset_i_d = message.assetID ? AssetID.toAmino(message.assetID) : undefined;
+    obj.coin_i_d = message.coinID ? CoinID.toAmino(message.coinID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: AnyOwnableIDAminoMsg): AnyOwnableID {
+    return AnyOwnableID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: AnyOwnableIDProtoMsg): AnyOwnableID {
+    return AnyOwnableID.decode(message.value);
+  },
+  toProto(message: AnyOwnableID): Uint8Array {
+    return AnyOwnableID.encode(message).finish();
+  },
+  toProtoMsg(message: AnyOwnableID): AnyOwnableIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.AnyOwnableID",
+      value: AnyOwnableID.encode(message).finish()
+    };
   }
 };

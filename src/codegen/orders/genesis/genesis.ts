@@ -1,10 +1,22 @@
-import { Mappable, MappableSDKType } from "../mappable/mappable";
-import { ParameterList, ParameterListSDKType } from "../../parameters/base/parameter_list";
+import { Mappable, MappableAmino, MappableSDKType } from "../mappable/mappable";
+import { ParameterList, ParameterListAmino, ParameterListSDKType } from "../../parameters/base/parameter_list";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Genesis {
   mappables: Mappable[];
   parameterList?: ParameterList;
+}
+export interface GenesisProtoMsg {
+  typeUrl: "/assetmantle.modules.orders.genesis.Genesis";
+  value: Uint8Array;
+}
+export interface GenesisAmino {
+  mappables: MappableAmino[];
+  parameter_list?: ParameterListAmino;
+}
+export interface GenesisAminoMsg {
+  type: "/assetmantle.modules.orders.genesis.Genesis";
+  value: GenesisAmino;
 }
 export interface GenesisSDKType {
   mappables: MappableSDKType[];
@@ -67,5 +79,36 @@ export const Genesis = {
     message.mappables = object.mappables?.map(e => Mappable.fromPartial(e)) || [];
     message.parameterList = object.parameterList !== undefined && object.parameterList !== null ? ParameterList.fromPartial(object.parameterList) : undefined;
     return message;
+  },
+  fromAmino(object: GenesisAmino): Genesis {
+    return {
+      mappables: Array.isArray(object?.mappables) ? object.mappables.map((e: any) => Mappable.fromAmino(e)) : [],
+      parameterList: object?.parameter_list ? ParameterList.fromAmino(object.parameter_list) : undefined
+    };
+  },
+  toAmino(message: Genesis): GenesisAmino {
+    const obj: any = {};
+    if (message.mappables) {
+      obj.mappables = message.mappables.map(e => e ? Mappable.toAmino(e) : undefined);
+    } else {
+      obj.mappables = [];
+    }
+    obj.parameter_list = message.parameterList ? ParameterList.toAmino(message.parameterList) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: GenesisAminoMsg): Genesis {
+    return Genesis.fromAmino(object.value);
+  },
+  fromProtoMsg(message: GenesisProtoMsg): Genesis {
+    return Genesis.decode(message.value);
+  },
+  toProto(message: Genesis): Uint8Array {
+    return Genesis.encode(message).finish();
+  },
+  toProtoMsg(message: Genesis): GenesisProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.orders.genesis.Genesis",
+      value: Genesis.encode(message).finish()
+    };
   }
 };

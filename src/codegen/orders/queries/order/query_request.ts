@@ -1,8 +1,19 @@
-import { OrderID, OrderIDSDKType } from "../../../ids/base/order_id";
+import { OrderID, OrderIDAmino, OrderIDSDKType } from "../../../ids/base/order_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface QueryRequest {
   orderID?: OrderID;
+}
+export interface QueryRequestProtoMsg {
+  typeUrl: "/assetmantle.modules.orders.queries.order.QueryRequest";
+  value: Uint8Array;
+}
+export interface QueryRequestAmino {
+  order_i_d?: OrderIDAmino;
+}
+export interface QueryRequestAminoMsg {
+  type: "/assetmantle.modules.orders.queries.order.QueryRequest";
+  value: QueryRequestAmino;
 }
 export interface QueryRequestSDKType {
   order_i_d?: OrderIDSDKType;
@@ -50,5 +61,30 @@ export const QueryRequest = {
     const message = createBaseQueryRequest();
     message.orderID = object.orderID !== undefined && object.orderID !== null ? OrderID.fromPartial(object.orderID) : undefined;
     return message;
+  },
+  fromAmino(object: QueryRequestAmino): QueryRequest {
+    return {
+      orderID: object?.order_i_d ? OrderID.fromAmino(object.order_i_d) : undefined
+    };
+  },
+  toAmino(message: QueryRequest): QueryRequestAmino {
+    const obj: any = {};
+    obj.order_i_d = message.orderID ? OrderID.toAmino(message.orderID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryRequestAminoMsg): QueryRequest {
+    return QueryRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryRequestProtoMsg): QueryRequest {
+    return QueryRequest.decode(message.value);
+  },
+  toProto(message: QueryRequest): Uint8Array {
+    return QueryRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryRequest): QueryRequestProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.orders.queries.order.QueryRequest",
+      value: QueryRequest.encode(message).finish()
+    };
   }
 };

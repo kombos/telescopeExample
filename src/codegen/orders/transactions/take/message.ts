@@ -1,5 +1,5 @@
-import { IdentityID, IdentityIDSDKType } from "../../../ids/base/identity_id";
-import { OrderID, OrderIDSDKType } from "../../../ids/base/order_id";
+import { IdentityID, IdentityIDAmino, IdentityIDSDKType } from "../../../ids/base/identity_id";
+import { OrderID, OrderIDAmino, OrderIDSDKType } from "../../../ids/base/order_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface Message {
@@ -7,6 +7,20 @@ export interface Message {
   fromID?: IdentityID;
   takerOwnableSplit: string;
   orderID?: OrderID;
+}
+export interface MessageProtoMsg {
+  typeUrl: "/assetmantle.modules.orders.transactions.take.Message";
+  value: Uint8Array;
+}
+export interface MessageAmino {
+  from: string;
+  from_i_d?: IdentityIDAmino;
+  taker_ownable_split: string;
+  order_i_d?: OrderIDAmino;
+}
+export interface MessageAminoMsg {
+  type: "/assetmantle.modules.orders.transactions.take.Message";
+  value: MessageAmino;
 }
 export interface MessageSDKType {
   from: string;
@@ -87,5 +101,36 @@ export const Message = {
     message.takerOwnableSplit = object.takerOwnableSplit ?? "";
     message.orderID = object.orderID !== undefined && object.orderID !== null ? OrderID.fromPartial(object.orderID) : undefined;
     return message;
+  },
+  fromAmino(object: MessageAmino): Message {
+    return {
+      from: object.from,
+      fromID: object?.from_i_d ? IdentityID.fromAmino(object.from_i_d) : undefined,
+      takerOwnableSplit: object.taker_ownable_split,
+      orderID: object?.order_i_d ? OrderID.fromAmino(object.order_i_d) : undefined
+    };
+  },
+  toAmino(message: Message): MessageAmino {
+    const obj: any = {};
+    obj.from = message.from;
+    obj.from_i_d = message.fromID ? IdentityID.toAmino(message.fromID) : undefined;
+    obj.taker_ownable_split = message.takerOwnableSplit;
+    obj.order_i_d = message.orderID ? OrderID.toAmino(message.orderID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MessageAminoMsg): Message {
+    return Message.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MessageProtoMsg): Message {
+    return Message.decode(message.value);
+  },
+  toProto(message: Message): Uint8Array {
+    return Message.encode(message).finish();
+  },
+  toProtoMsg(message: Message): MessageProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.orders.transactions.take.Message",
+      value: Message.encode(message).finish()
+    };
   }
 };

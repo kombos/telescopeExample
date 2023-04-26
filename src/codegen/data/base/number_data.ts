@@ -3,6 +3,17 @@ import * as _m0 from "protobufjs/minimal";
 export interface NumberData {
   value: Long;
 }
+export interface NumberDataProtoMsg {
+  typeUrl: "/assetmantle.schema.data.base.NumberData";
+  value: Uint8Array;
+}
+export interface NumberDataAmino {
+  value: string;
+}
+export interface NumberDataAminoMsg {
+  type: "/assetmantle.schema.data.base.NumberData";
+  value: NumberDataAmino;
+}
 export interface NumberDataSDKType {
   value: Long;
 }
@@ -49,5 +60,30 @@ export const NumberData = {
     const message = createBaseNumberData();
     message.value = object.value !== undefined && object.value !== null ? Long.fromValue(object.value) : Long.ZERO;
     return message;
+  },
+  fromAmino(object: NumberDataAmino): NumberData {
+    return {
+      value: Long.fromString(object.value)
+    };
+  },
+  toAmino(message: NumberData): NumberDataAmino {
+    const obj: any = {};
+    obj.value = message.value ? message.value.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: NumberDataAminoMsg): NumberData {
+    return NumberData.fromAmino(object.value);
+  },
+  fromProtoMsg(message: NumberDataProtoMsg): NumberData {
+    return NumberData.decode(message.value);
+  },
+  toProto(message: NumberData): Uint8Array {
+    return NumberData.encode(message).finish();
+  },
+  toProtoMsg(message: NumberData): NumberDataProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.data.base.NumberData",
+      value: NumberData.encode(message).finish()
+    };
   }
 };

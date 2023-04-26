@@ -3,6 +3,17 @@ import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
 export interface AccAddressData {
   value: Uint8Array;
 }
+export interface AccAddressDataProtoMsg {
+  typeUrl: "/assetmantle.schema.data.base.AccAddressData";
+  value: Uint8Array;
+}
+export interface AccAddressDataAmino {
+  value: Uint8Array;
+}
+export interface AccAddressDataAminoMsg {
+  type: "/assetmantle.schema.data.base.AccAddressData";
+  value: AccAddressDataAmino;
+}
 export interface AccAddressDataSDKType {
   value: Uint8Array;
 }
@@ -49,5 +60,30 @@ export const AccAddressData = {
     const message = createBaseAccAddressData();
     message.value = object.value ?? new Uint8Array();
     return message;
+  },
+  fromAmino(object: AccAddressDataAmino): AccAddressData {
+    return {
+      value: object.value
+    };
+  },
+  toAmino(message: AccAddressData): AccAddressDataAmino {
+    const obj: any = {};
+    obj.value = message.value;
+    return obj;
+  },
+  fromAminoMsg(object: AccAddressDataAminoMsg): AccAddressData {
+    return AccAddressData.fromAmino(object.value);
+  },
+  fromProtoMsg(message: AccAddressDataProtoMsg): AccAddressData {
+    return AccAddressData.decode(message.value);
+  },
+  toProto(message: AccAddressData): Uint8Array {
+    return AccAddressData.encode(message).finish();
+  },
+  toProtoMsg(message: AccAddressData): AccAddressDataProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.data.base.AccAddressData",
+      value: AccAddressData.encode(message).finish()
+    };
   }
 };

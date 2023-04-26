@@ -1,8 +1,19 @@
-import { Document, DocumentSDKType } from "../../documents/base/document";
+import { Document, DocumentAmino, DocumentSDKType } from "../../documents/base/document";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Mappable {
   order?: Document;
+}
+export interface MappableProtoMsg {
+  typeUrl: "/assetmantle.modules.orders.mappable.Mappable";
+  value: Uint8Array;
+}
+export interface MappableAmino {
+  order?: DocumentAmino;
+}
+export interface MappableAminoMsg {
+  type: "/assetmantle.modules.orders.mappable.Mappable";
+  value: MappableAmino;
 }
 export interface MappableSDKType {
   order?: DocumentSDKType;
@@ -50,5 +61,30 @@ export const Mappable = {
     const message = createBaseMappable();
     message.order = object.order !== undefined && object.order !== null ? Document.fromPartial(object.order) : undefined;
     return message;
+  },
+  fromAmino(object: MappableAmino): Mappable {
+    return {
+      order: object?.order ? Document.fromAmino(object.order) : undefined
+    };
+  },
+  toAmino(message: Mappable): MappableAmino {
+    const obj: any = {};
+    obj.order = message.order ? Document.toAmino(message.order) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MappableAminoMsg): Mappable {
+    return Mappable.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MappableProtoMsg): Mappable {
+    return Mappable.decode(message.value);
+  },
+  toProto(message: Mappable): Uint8Array {
+    return Mappable.encode(message).finish();
+  },
+  toProtoMsg(message: Mappable): MappableProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.orders.mappable.Mappable",
+      value: Mappable.encode(message).finish()
+    };
   }
 };

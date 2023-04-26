@@ -3,6 +3,17 @@ import * as _m0 from "protobufjs/minimal";
 export interface Height {
   value: Long;
 }
+export interface HeightProtoMsg {
+  typeUrl: "/assetmantle.schema.types.base.Height";
+  value: Uint8Array;
+}
+export interface HeightAmino {
+  value: string;
+}
+export interface HeightAminoMsg {
+  type: "/assetmantle.schema.types.base.Height";
+  value: HeightAmino;
+}
 export interface HeightSDKType {
   value: Long;
 }
@@ -49,5 +60,30 @@ export const Height = {
     const message = createBaseHeight();
     message.value = object.value !== undefined && object.value !== null ? Long.fromValue(object.value) : Long.ZERO;
     return message;
+  },
+  fromAmino(object: HeightAmino): Height {
+    return {
+      value: Long.fromString(object.value)
+    };
+  },
+  toAmino(message: Height): HeightAmino {
+    const obj: any = {};
+    obj.value = message.value ? message.value.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: HeightAminoMsg): Height {
+    return Height.fromAmino(object.value);
+  },
+  fromProtoMsg(message: HeightProtoMsg): Height {
+    return Height.decode(message.value);
+  },
+  toProto(message: Height): Uint8Array {
+    return Height.encode(message).finish();
+  },
+  toProtoMsg(message: Height): HeightProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.types.base.Height",
+      value: Height.encode(message).finish()
+    };
   }
 };

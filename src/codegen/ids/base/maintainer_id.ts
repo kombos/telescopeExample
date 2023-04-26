@@ -1,8 +1,19 @@
-import { HashID, HashIDSDKType } from "./hash_id";
+import { HashID, HashIDAmino, HashIDSDKType } from "./hash_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface MaintainerID {
   hashID?: HashID;
+}
+export interface MaintainerIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.MaintainerID";
+  value: Uint8Array;
+}
+export interface MaintainerIDAmino {
+  hash_i_d?: HashIDAmino;
+}
+export interface MaintainerIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.MaintainerID";
+  value: MaintainerIDAmino;
 }
 export interface MaintainerIDSDKType {
   hash_i_d?: HashIDSDKType;
@@ -50,5 +61,30 @@ export const MaintainerID = {
     const message = createBaseMaintainerID();
     message.hashID = object.hashID !== undefined && object.hashID !== null ? HashID.fromPartial(object.hashID) : undefined;
     return message;
+  },
+  fromAmino(object: MaintainerIDAmino): MaintainerID {
+    return {
+      hashID: object?.hash_i_d ? HashID.fromAmino(object.hash_i_d) : undefined
+    };
+  },
+  toAmino(message: MaintainerID): MaintainerIDAmino {
+    const obj: any = {};
+    obj.hash_i_d = message.hashID ? HashID.toAmino(message.hashID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MaintainerIDAminoMsg): MaintainerID {
+    return MaintainerID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MaintainerIDProtoMsg): MaintainerID {
+    return MaintainerID.decode(message.value);
+  },
+  toProto(message: MaintainerID): Uint8Array {
+    return MaintainerID.encode(message).finish();
+  },
+  toProtoMsg(message: MaintainerID): MaintainerIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.MaintainerID",
+      value: MaintainerID.encode(message).finish()
+    };
   }
 };

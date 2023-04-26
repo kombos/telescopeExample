@@ -1,6 +1,6 @@
-import { IdentityID, IdentityIDSDKType } from "../../../ids/base/identity_id";
-import { ClassificationID, ClassificationIDSDKType } from "../../../ids/base/classification_id";
-import { PropertyList, PropertyListSDKType } from "../../../lists/base/property_list";
+import { IdentityID, IdentityIDAmino, IdentityIDSDKType } from "../../../ids/base/identity_id";
+import { ClassificationID, ClassificationIDAmino, ClassificationIDSDKType } from "../../../ids/base/classification_id";
+import { PropertyList, PropertyListAmino, PropertyListSDKType } from "../../../lists/base/property_list";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface Message {
@@ -15,6 +15,27 @@ export interface Message {
   canAddMaintainer: boolean;
   canRemoveMaintainer: boolean;
   canMutateMaintainer: boolean;
+}
+export interface MessageProtoMsg {
+  typeUrl: "/assetmantle.modules.orders.transactions.deputize.Message";
+  value: Uint8Array;
+}
+export interface MessageAmino {
+  from: string;
+  from_i_d?: IdentityIDAmino;
+  to_i_d?: IdentityIDAmino;
+  classification_i_d?: ClassificationIDAmino;
+  maintained_properties?: PropertyListAmino;
+  can_mint_asset: boolean;
+  can_burn_asset: boolean;
+  can_renumerate_asset: boolean;
+  can_add_maintainer: boolean;
+  can_remove_maintainer: boolean;
+  can_mutate_maintainer: boolean;
+}
+export interface MessageAminoMsg {
+  type: "/assetmantle.modules.orders.transactions.deputize.Message";
+  value: MessageAmino;
 }
 export interface MessageSDKType {
   from: string;
@@ -172,5 +193,50 @@ export const Message = {
     message.canRemoveMaintainer = object.canRemoveMaintainer ?? false;
     message.canMutateMaintainer = object.canMutateMaintainer ?? false;
     return message;
+  },
+  fromAmino(object: MessageAmino): Message {
+    return {
+      from: object.from,
+      fromID: object?.from_i_d ? IdentityID.fromAmino(object.from_i_d) : undefined,
+      toID: object?.to_i_d ? IdentityID.fromAmino(object.to_i_d) : undefined,
+      classificationID: object?.classification_i_d ? ClassificationID.fromAmino(object.classification_i_d) : undefined,
+      maintainedProperties: object?.maintained_properties ? PropertyList.fromAmino(object.maintained_properties) : undefined,
+      canMintAsset: object.can_mint_asset,
+      canBurnAsset: object.can_burn_asset,
+      canRenumerateAsset: object.can_renumerate_asset,
+      canAddMaintainer: object.can_add_maintainer,
+      canRemoveMaintainer: object.can_remove_maintainer,
+      canMutateMaintainer: object.can_mutate_maintainer
+    };
+  },
+  toAmino(message: Message): MessageAmino {
+    const obj: any = {};
+    obj.from = message.from;
+    obj.from_i_d = message.fromID ? IdentityID.toAmino(message.fromID) : undefined;
+    obj.to_i_d = message.toID ? IdentityID.toAmino(message.toID) : undefined;
+    obj.classification_i_d = message.classificationID ? ClassificationID.toAmino(message.classificationID) : undefined;
+    obj.maintained_properties = message.maintainedProperties ? PropertyList.toAmino(message.maintainedProperties) : undefined;
+    obj.can_mint_asset = message.canMintAsset;
+    obj.can_burn_asset = message.canBurnAsset;
+    obj.can_renumerate_asset = message.canRenumerateAsset;
+    obj.can_add_maintainer = message.canAddMaintainer;
+    obj.can_remove_maintainer = message.canRemoveMaintainer;
+    obj.can_mutate_maintainer = message.canMutateMaintainer;
+    return obj;
+  },
+  fromAminoMsg(object: MessageAminoMsg): Message {
+    return Message.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MessageProtoMsg): Message {
+    return Message.decode(message.value);
+  },
+  toProto(message: Message): Uint8Array {
+    return Message.encode(message).finish();
+  },
+  toProtoMsg(message: Message): MessageProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.orders.transactions.deputize.Message",
+      value: Message.encode(message).finish()
+    };
   }
 };

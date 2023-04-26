@@ -1,7 +1,18 @@
-import { AnyProperty, AnyPropertySDKType } from "../../properties/base/any_property";
+import { AnyProperty, AnyPropertyAmino, AnyPropertySDKType } from "../../properties/base/any_property";
 import * as _m0 from "protobufjs/minimal";
 export interface PropertyList {
   properties: AnyProperty[];
+}
+export interface PropertyListProtoMsg {
+  typeUrl: "/assetmantle.schema.lists.base.PropertyList";
+  value: Uint8Array;
+}
+export interface PropertyListAmino {
+  properties: AnyPropertyAmino[];
+}
+export interface PropertyListAminoMsg {
+  type: "/assetmantle.schema.lists.base.PropertyList";
+  value: PropertyListAmino;
 }
 export interface PropertyListSDKType {
   properties: AnyPropertySDKType[];
@@ -53,5 +64,34 @@ export const PropertyList = {
     const message = createBasePropertyList();
     message.properties = object.properties?.map(e => AnyProperty.fromPartial(e)) || [];
     return message;
+  },
+  fromAmino(object: PropertyListAmino): PropertyList {
+    return {
+      properties: Array.isArray(object?.properties) ? object.properties.map((e: any) => AnyProperty.fromAmino(e)) : []
+    };
+  },
+  toAmino(message: PropertyList): PropertyListAmino {
+    const obj: any = {};
+    if (message.properties) {
+      obj.properties = message.properties.map(e => e ? AnyProperty.toAmino(e) : undefined);
+    } else {
+      obj.properties = [];
+    }
+    return obj;
+  },
+  fromAminoMsg(object: PropertyListAminoMsg): PropertyList {
+    return PropertyList.fromAmino(object.value);
+  },
+  fromProtoMsg(message: PropertyListProtoMsg): PropertyList {
+    return PropertyList.decode(message.value);
+  },
+  toProto(message: PropertyList): Uint8Array {
+    return PropertyList.encode(message).finish();
+  },
+  toProtoMsg(message: PropertyList): PropertyListProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.lists.base.PropertyList",
+      value: PropertyList.encode(message).finish()
+    };
   }
 };

@@ -1,8 +1,19 @@
-import { MetaProperty, MetaPropertySDKType } from "../../properties/base/meta_property";
+import { MetaProperty, MetaPropertyAmino, MetaPropertySDKType } from "../../properties/base/meta_property";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Parameter {
   metaProperty?: MetaProperty;
+}
+export interface ParameterProtoMsg {
+  typeUrl: "/assetmantle.schema.parameters.base.Parameter";
+  value: Uint8Array;
+}
+export interface ParameterAmino {
+  meta_property?: MetaPropertyAmino;
+}
+export interface ParameterAminoMsg {
+  type: "/assetmantle.schema.parameters.base.Parameter";
+  value: ParameterAmino;
 }
 export interface ParameterSDKType {
   meta_property?: MetaPropertySDKType;
@@ -50,5 +61,30 @@ export const Parameter = {
     const message = createBaseParameter();
     message.metaProperty = object.metaProperty !== undefined && object.metaProperty !== null ? MetaProperty.fromPartial(object.metaProperty) : undefined;
     return message;
+  },
+  fromAmino(object: ParameterAmino): Parameter {
+    return {
+      metaProperty: object?.meta_property ? MetaProperty.fromAmino(object.meta_property) : undefined
+    };
+  },
+  toAmino(message: Parameter): ParameterAmino {
+    const obj: any = {};
+    obj.meta_property = message.metaProperty ? MetaProperty.toAmino(message.metaProperty) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: ParameterAminoMsg): Parameter {
+    return Parameter.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ParameterProtoMsg): Parameter {
+    return Parameter.decode(message.value);
+  },
+  toProto(message: Parameter): Uint8Array {
+    return Parameter.encode(message).finish();
+  },
+  toProtoMsg(message: Parameter): ParameterProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.parameters.base.Parameter",
+      value: Parameter.encode(message).finish()
+    };
   }
 };

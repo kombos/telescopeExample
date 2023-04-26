@@ -1,8 +1,19 @@
-import { HashID, HashIDSDKType } from "./hash_id";
+import { HashID, HashIDAmino, HashIDSDKType } from "./hash_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface AssetID {
   hashID?: HashID;
+}
+export interface AssetIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.AssetID";
+  value: Uint8Array;
+}
+export interface AssetIDAmino {
+  hash_i_d?: HashIDAmino;
+}
+export interface AssetIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.AssetID";
+  value: AssetIDAmino;
 }
 export interface AssetIDSDKType {
   hash_i_d?: HashIDSDKType;
@@ -50,5 +61,30 @@ export const AssetID = {
     const message = createBaseAssetID();
     message.hashID = object.hashID !== undefined && object.hashID !== null ? HashID.fromPartial(object.hashID) : undefined;
     return message;
+  },
+  fromAmino(object: AssetIDAmino): AssetID {
+    return {
+      hashID: object?.hash_i_d ? HashID.fromAmino(object.hash_i_d) : undefined
+    };
+  },
+  toAmino(message: AssetID): AssetIDAmino {
+    const obj: any = {};
+    obj.hash_i_d = message.hashID ? HashID.toAmino(message.hashID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: AssetIDAminoMsg): AssetID {
+    return AssetID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: AssetIDProtoMsg): AssetID {
+    return AssetID.decode(message.value);
+  },
+  toProto(message: AssetID): Uint8Array {
+    return AssetID.encode(message).finish();
+  },
+  toProtoMsg(message: AssetID): AssetIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.AssetID",
+      value: AssetID.encode(message).finish()
+    };
   }
 };

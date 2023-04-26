@@ -1,5 +1,5 @@
-import { IdentityID, IdentityIDSDKType } from "../../../ids/base/identity_id";
-import { ClassificationID, ClassificationIDSDKType } from "../../../ids/base/classification_id";
+import { IdentityID, IdentityIDAmino, IdentityIDSDKType } from "../../../ids/base/identity_id";
+import { ClassificationID, ClassificationIDAmino, ClassificationIDSDKType } from "../../../ids/base/classification_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface Message {
@@ -7,6 +7,20 @@ export interface Message {
   fromID?: IdentityID;
   toID?: IdentityID;
   classificationID?: ClassificationID;
+}
+export interface MessageProtoMsg {
+  typeUrl: "/assetmantle.modules.identities.transactions.revoke.Message";
+  value: Uint8Array;
+}
+export interface MessageAmino {
+  from: string;
+  from_i_d?: IdentityIDAmino;
+  to_i_d?: IdentityIDAmino;
+  classification_i_d?: ClassificationIDAmino;
+}
+export interface MessageAminoMsg {
+  type: "/assetmantle.modules.identities.transactions.revoke.Message";
+  value: MessageAmino;
 }
 export interface MessageSDKType {
   from: string;
@@ -87,5 +101,36 @@ export const Message = {
     message.toID = object.toID !== undefined && object.toID !== null ? IdentityID.fromPartial(object.toID) : undefined;
     message.classificationID = object.classificationID !== undefined && object.classificationID !== null ? ClassificationID.fromPartial(object.classificationID) : undefined;
     return message;
+  },
+  fromAmino(object: MessageAmino): Message {
+    return {
+      from: object.from,
+      fromID: object?.from_i_d ? IdentityID.fromAmino(object.from_i_d) : undefined,
+      toID: object?.to_i_d ? IdentityID.fromAmino(object.to_i_d) : undefined,
+      classificationID: object?.classification_i_d ? ClassificationID.fromAmino(object.classification_i_d) : undefined
+    };
+  },
+  toAmino(message: Message): MessageAmino {
+    const obj: any = {};
+    obj.from = message.from;
+    obj.from_i_d = message.fromID ? IdentityID.toAmino(message.fromID) : undefined;
+    obj.to_i_d = message.toID ? IdentityID.toAmino(message.toID) : undefined;
+    obj.classification_i_d = message.classificationID ? ClassificationID.toAmino(message.classificationID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MessageAminoMsg): Message {
+    return Message.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MessageProtoMsg): Message {
+    return Message.decode(message.value);
+  },
+  toProto(message: Message): Uint8Array {
+    return Message.encode(message).finish();
+  },
+  toProtoMsg(message: Message): MessageProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.identities.transactions.revoke.Message",
+      value: Message.encode(message).finish()
+    };
   }
 };

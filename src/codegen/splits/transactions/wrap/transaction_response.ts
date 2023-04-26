@@ -3,6 +3,17 @@ import { isSet } from "../../../helpers";
 export interface TransactionResponse {
   coinID: string;
 }
+export interface TransactionResponseProtoMsg {
+  typeUrl: "/assetmantle.modules.splits.transactions.wrap.TransactionResponse";
+  value: Uint8Array;
+}
+export interface TransactionResponseAmino {
+  coin_i_d: string;
+}
+export interface TransactionResponseAminoMsg {
+  type: "/assetmantle.modules.splits.transactions.wrap.TransactionResponse";
+  value: TransactionResponseAmino;
+}
 export interface TransactionResponseSDKType {
   coin_i_d: string;
 }
@@ -49,5 +60,30 @@ export const TransactionResponse = {
     const message = createBaseTransactionResponse();
     message.coinID = object.coinID ?? "";
     return message;
+  },
+  fromAmino(object: TransactionResponseAmino): TransactionResponse {
+    return {
+      coinID: object.coin_i_d
+    };
+  },
+  toAmino(message: TransactionResponse): TransactionResponseAmino {
+    const obj: any = {};
+    obj.coin_i_d = message.coinID;
+    return obj;
+  },
+  fromAminoMsg(object: TransactionResponseAminoMsg): TransactionResponse {
+    return TransactionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: TransactionResponseProtoMsg): TransactionResponse {
+    return TransactionResponse.decode(message.value);
+  },
+  toProto(message: TransactionResponse): Uint8Array {
+    return TransactionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: TransactionResponse): TransactionResponseProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.splits.transactions.wrap.TransactionResponse",
+      value: TransactionResponse.encode(message).finish()
+    };
   }
 };

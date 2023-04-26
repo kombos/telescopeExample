@@ -3,6 +3,17 @@ import { isSet } from "../../helpers";
 export interface StringData {
   value: string;
 }
+export interface StringDataProtoMsg {
+  typeUrl: "/assetmantle.schema.data.base.StringData";
+  value: Uint8Array;
+}
+export interface StringDataAmino {
+  value: string;
+}
+export interface StringDataAminoMsg {
+  type: "/assetmantle.schema.data.base.StringData";
+  value: StringDataAmino;
+}
 export interface StringDataSDKType {
   value: string;
 }
@@ -49,5 +60,30 @@ export const StringData = {
     const message = createBaseStringData();
     message.value = object.value ?? "";
     return message;
+  },
+  fromAmino(object: StringDataAmino): StringData {
+    return {
+      value: object.value
+    };
+  },
+  toAmino(message: StringData): StringDataAmino {
+    const obj: any = {};
+    obj.value = message.value;
+    return obj;
+  },
+  fromAminoMsg(object: StringDataAminoMsg): StringData {
+    return StringData.fromAmino(object.value);
+  },
+  fromProtoMsg(message: StringDataProtoMsg): StringData {
+    return StringData.decode(message.value);
+  },
+  toProto(message: StringData): Uint8Array {
+    return StringData.encode(message).finish();
+  },
+  toProtoMsg(message: StringData): StringDataProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.data.base.StringData",
+      value: StringData.encode(message).finish()
+    };
   }
 };

@@ -1,10 +1,22 @@
-import { MesaProperty, MesaPropertySDKType } from "./mesa_property";
-import { MetaProperty, MetaPropertySDKType } from "./meta_property";
+import { MesaProperty, MesaPropertyAmino, MesaPropertySDKType } from "./mesa_property";
+import { MetaProperty, MetaPropertyAmino, MetaPropertySDKType } from "./meta_property";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface AnyProperty {
   mesaProperty?: MesaProperty;
   metaProperty?: MetaProperty;
+}
+export interface AnyPropertyProtoMsg {
+  typeUrl: "/assetmantle.schema.properties.base.AnyProperty";
+  value: Uint8Array;
+}
+export interface AnyPropertyAmino {
+  mesa_property?: MesaPropertyAmino;
+  meta_property?: MetaPropertyAmino;
+}
+export interface AnyPropertyAminoMsg {
+  type: "/assetmantle.schema.properties.base.AnyProperty";
+  value: AnyPropertyAmino;
 }
 export interface AnyPropertySDKType {
   mesa_property?: MesaPropertySDKType;
@@ -63,5 +75,32 @@ export const AnyProperty = {
     message.mesaProperty = object.mesaProperty !== undefined && object.mesaProperty !== null ? MesaProperty.fromPartial(object.mesaProperty) : undefined;
     message.metaProperty = object.metaProperty !== undefined && object.metaProperty !== null ? MetaProperty.fromPartial(object.metaProperty) : undefined;
     return message;
+  },
+  fromAmino(object: AnyPropertyAmino): AnyProperty {
+    return {
+      mesaProperty: object?.mesa_property ? MesaProperty.fromAmino(object.mesa_property) : undefined,
+      metaProperty: object?.meta_property ? MetaProperty.fromAmino(object.meta_property) : undefined
+    };
+  },
+  toAmino(message: AnyProperty): AnyPropertyAmino {
+    const obj: any = {};
+    obj.mesa_property = message.mesaProperty ? MesaProperty.toAmino(message.mesaProperty) : undefined;
+    obj.meta_property = message.metaProperty ? MetaProperty.toAmino(message.metaProperty) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: AnyPropertyAminoMsg): AnyProperty {
+    return AnyProperty.fromAmino(object.value);
+  },
+  fromProtoMsg(message: AnyPropertyProtoMsg): AnyProperty {
+    return AnyProperty.decode(message.value);
+  },
+  toProto(message: AnyProperty): Uint8Array {
+    return AnyProperty.encode(message).finish();
+  },
+  toProtoMsg(message: AnyProperty): AnyPropertyProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.properties.base.AnyProperty",
+      value: AnyProperty.encode(message).finish()
+    };
   }
 };

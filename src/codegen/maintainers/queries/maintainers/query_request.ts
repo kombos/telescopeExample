@@ -1,8 +1,19 @@
-import { PageRequest, PageRequestSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
+import { PageRequest, PageRequestAmino, PageRequestSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface QueryRequest {
   pageRequest?: PageRequest;
+}
+export interface QueryRequestProtoMsg {
+  typeUrl: "/assetmantle.modules.maintainers.queries.maintainers.QueryRequest";
+  value: Uint8Array;
+}
+export interface QueryRequestAmino {
+  page_request?: PageRequestAmino;
+}
+export interface QueryRequestAminoMsg {
+  type: "/assetmantle.modules.maintainers.queries.maintainers.QueryRequest";
+  value: QueryRequestAmino;
 }
 export interface QueryRequestSDKType {
   page_request?: PageRequestSDKType;
@@ -50,5 +61,30 @@ export const QueryRequest = {
     const message = createBaseQueryRequest();
     message.pageRequest = object.pageRequest !== undefined && object.pageRequest !== null ? PageRequest.fromPartial(object.pageRequest) : undefined;
     return message;
+  },
+  fromAmino(object: QueryRequestAmino): QueryRequest {
+    return {
+      pageRequest: object?.page_request ? PageRequest.fromAmino(object.page_request) : undefined
+    };
+  },
+  toAmino(message: QueryRequest): QueryRequestAmino {
+    const obj: any = {};
+    obj.page_request = message.pageRequest ? PageRequest.toAmino(message.pageRequest) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryRequestAminoMsg): QueryRequest {
+    return QueryRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryRequestProtoMsg): QueryRequest {
+    return QueryRequest.decode(message.value);
+  },
+  toProto(message: QueryRequest): Uint8Array {
+    return QueryRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryRequest): QueryRequestProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.maintainers.queries.maintainers.QueryRequest",
+      value: QueryRequest.encode(message).finish()
+    };
   }
 };

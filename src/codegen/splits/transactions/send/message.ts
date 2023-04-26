@@ -1,5 +1,5 @@
-import { IdentityID, IdentityIDSDKType } from "../../../ids/base/identity_id";
-import { AnyOwnableID, AnyOwnableIDSDKType } from "../../../ids/base/any_ownable_id";
+import { IdentityID, IdentityIDAmino, IdentityIDSDKType } from "../../../ids/base/identity_id";
+import { AnyOwnableID, AnyOwnableIDAmino, AnyOwnableIDSDKType } from "../../../ids/base/any_ownable_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface Message {
@@ -8,6 +8,21 @@ export interface Message {
   toID?: IdentityID;
   ownableID?: AnyOwnableID;
   value: string;
+}
+export interface MessageProtoMsg {
+  typeUrl: "/assetmantle.modules.splits.transactions.send.Message";
+  value: Uint8Array;
+}
+export interface MessageAmino {
+  from: string;
+  from_i_d?: IdentityIDAmino;
+  to_i_d?: IdentityIDAmino;
+  ownable_i_d?: AnyOwnableIDAmino;
+  value: string;
+}
+export interface MessageAminoMsg {
+  type: "/assetmantle.modules.splits.transactions.send.Message";
+  value: MessageAmino;
 }
 export interface MessageSDKType {
   from: string;
@@ -99,5 +114,38 @@ export const Message = {
     message.ownableID = object.ownableID !== undefined && object.ownableID !== null ? AnyOwnableID.fromPartial(object.ownableID) : undefined;
     message.value = object.value ?? "";
     return message;
+  },
+  fromAmino(object: MessageAmino): Message {
+    return {
+      from: object.from,
+      fromID: object?.from_i_d ? IdentityID.fromAmino(object.from_i_d) : undefined,
+      toID: object?.to_i_d ? IdentityID.fromAmino(object.to_i_d) : undefined,
+      ownableID: object?.ownable_i_d ? AnyOwnableID.fromAmino(object.ownable_i_d) : undefined,
+      value: object.value
+    };
+  },
+  toAmino(message: Message): MessageAmino {
+    const obj: any = {};
+    obj.from = message.from;
+    obj.from_i_d = message.fromID ? IdentityID.toAmino(message.fromID) : undefined;
+    obj.to_i_d = message.toID ? IdentityID.toAmino(message.toID) : undefined;
+    obj.ownable_i_d = message.ownableID ? AnyOwnableID.toAmino(message.ownableID) : undefined;
+    obj.value = message.value;
+    return obj;
+  },
+  fromAminoMsg(object: MessageAminoMsg): Message {
+    return Message.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MessageProtoMsg): Message {
+    return Message.decode(message.value);
+  },
+  toProto(message: Message): Uint8Array {
+    return Message.encode(message).finish();
+  },
+  toProtoMsg(message: Message): MessageProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.splits.transactions.send.Message",
+      value: Message.encode(message).finish()
+    };
   }
 };

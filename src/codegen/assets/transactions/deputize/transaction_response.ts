@@ -1,5 +1,14 @@
 import * as _m0 from "protobufjs/minimal";
 export interface TransactionResponse {}
+export interface TransactionResponseProtoMsg {
+  typeUrl: "/assetmantle.modules.assets.transactions.deputize.TransactionResponse";
+  value: Uint8Array;
+}
+export interface TransactionResponseAmino {}
+export interface TransactionResponseAminoMsg {
+  type: "/assetmantle.modules.assets.transactions.deputize.TransactionResponse";
+  value: TransactionResponseAmino;
+}
 export interface TransactionResponseSDKType {}
 function createBaseTransactionResponse(): TransactionResponse {
   return {};
@@ -32,5 +41,27 @@ export const TransactionResponse = {
   fromPartial(_: Partial<TransactionResponse>): TransactionResponse {
     const message = createBaseTransactionResponse();
     return message;
+  },
+  fromAmino(_: TransactionResponseAmino): TransactionResponse {
+    return {};
+  },
+  toAmino(_: TransactionResponse): TransactionResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: TransactionResponseAminoMsg): TransactionResponse {
+    return TransactionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: TransactionResponseProtoMsg): TransactionResponse {
+    return TransactionResponse.decode(message.value);
+  },
+  toProto(message: TransactionResponse): Uint8Array {
+    return TransactionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: TransactionResponse): TransactionResponseProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.assets.transactions.deputize.TransactionResponse",
+      value: TransactionResponse.encode(message).finish()
+    };
   }
 };

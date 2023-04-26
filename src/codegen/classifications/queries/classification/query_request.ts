@@ -1,8 +1,19 @@
-import { ClassificationID, ClassificationIDSDKType } from "../../../ids/base/classification_id";
+import { ClassificationID, ClassificationIDAmino, ClassificationIDSDKType } from "../../../ids/base/classification_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../../helpers";
 export interface QueryRequest {
   classificationID?: ClassificationID;
+}
+export interface QueryRequestProtoMsg {
+  typeUrl: "/assetmantle.modules.classifications.queries.classification.QueryRequest";
+  value: Uint8Array;
+}
+export interface QueryRequestAmino {
+  classification_i_d?: ClassificationIDAmino;
+}
+export interface QueryRequestAminoMsg {
+  type: "/assetmantle.modules.classifications.queries.classification.QueryRequest";
+  value: QueryRequestAmino;
 }
 export interface QueryRequestSDKType {
   classification_i_d?: ClassificationIDSDKType;
@@ -50,5 +61,30 @@ export const QueryRequest = {
     const message = createBaseQueryRequest();
     message.classificationID = object.classificationID !== undefined && object.classificationID !== null ? ClassificationID.fromPartial(object.classificationID) : undefined;
     return message;
+  },
+  fromAmino(object: QueryRequestAmino): QueryRequest {
+    return {
+      classificationID: object?.classification_i_d ? ClassificationID.fromAmino(object.classification_i_d) : undefined
+    };
+  },
+  toAmino(message: QueryRequest): QueryRequestAmino {
+    const obj: any = {};
+    obj.classification_i_d = message.classificationID ? ClassificationID.toAmino(message.classificationID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryRequestAminoMsg): QueryRequest {
+    return QueryRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryRequestProtoMsg): QueryRequest {
+    return QueryRequest.decode(message.value);
+  },
+  toProto(message: QueryRequest): Uint8Array {
+    return QueryRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryRequest): QueryRequestProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.classifications.queries.classification.QueryRequest",
+      value: QueryRequest.encode(message).finish()
+    };
   }
 };

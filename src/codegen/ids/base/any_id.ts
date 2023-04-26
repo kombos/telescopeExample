@@ -1,15 +1,15 @@
-import { AssetID, AssetIDSDKType } from "./asset_id";
-import { ClassificationID, ClassificationIDSDKType } from "./classification_id";
-import { CoinID, CoinIDSDKType } from "./coin_id";
-import { DataID, DataIDSDKType } from "./data_id";
-import { HashID, HashIDSDKType } from "./hash_id";
-import { IdentityID, IdentityIDSDKType } from "./identity_id";
-import { MaintainerID, MaintainerIDSDKType } from "./maintainer_id";
-import { OrderID, OrderIDSDKType } from "./order_id";
-import { AnyOwnableID, AnyOwnableIDSDKType } from "./any_ownable_id";
-import { PropertyID, PropertyIDSDKType } from "./property_id";
-import { SplitID, SplitIDSDKType } from "./split_id";
-import { StringID, StringIDSDKType } from "./string_id";
+import { AssetID, AssetIDAmino, AssetIDSDKType } from "./asset_id";
+import { ClassificationID, ClassificationIDAmino, ClassificationIDSDKType } from "./classification_id";
+import { CoinID, CoinIDAmino, CoinIDSDKType } from "./coin_id";
+import { DataID, DataIDAmino, DataIDSDKType } from "./data_id";
+import { HashID, HashIDAmino, HashIDSDKType } from "./hash_id";
+import { IdentityID, IdentityIDAmino, IdentityIDSDKType } from "./identity_id";
+import { MaintainerID, MaintainerIDAmino, MaintainerIDSDKType } from "./maintainer_id";
+import { OrderID, OrderIDAmino, OrderIDSDKType } from "./order_id";
+import { AnyOwnableID, AnyOwnableIDAmino, AnyOwnableIDSDKType } from "./any_ownable_id";
+import { PropertyID, PropertyIDAmino, PropertyIDSDKType } from "./property_id";
+import { SplitID, SplitIDAmino, SplitIDSDKType } from "./split_id";
+import { StringID, StringIDAmino, StringIDSDKType } from "./string_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface AnyID {
@@ -25,6 +25,28 @@ export interface AnyID {
   propertyID?: PropertyID;
   splitID?: SplitID;
   stringID?: StringID;
+}
+export interface AnyIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.AnyID";
+  value: Uint8Array;
+}
+export interface AnyIDAmino {
+  asset_i_d?: AssetIDAmino;
+  classification_i_d?: ClassificationIDAmino;
+  coin_i_d?: CoinIDAmino;
+  data_i_d?: DataIDAmino;
+  hash_i_d?: HashIDAmino;
+  identity_i_d?: IdentityIDAmino;
+  maintainer_i_d?: MaintainerIDAmino;
+  order_i_d?: OrderIDAmino;
+  ownable_i_d?: AnyOwnableIDAmino;
+  property_i_d?: PropertyIDAmino;
+  split_i_d?: SplitIDAmino;
+  string_i_d?: StringIDAmino;
+}
+export interface AnyIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.AnyID";
+  value: AnyIDAmino;
 }
 export interface AnyIDSDKType {
   asset_i_d?: AssetIDSDKType;
@@ -193,5 +215,52 @@ export const AnyID = {
     message.splitID = object.splitID !== undefined && object.splitID !== null ? SplitID.fromPartial(object.splitID) : undefined;
     message.stringID = object.stringID !== undefined && object.stringID !== null ? StringID.fromPartial(object.stringID) : undefined;
     return message;
+  },
+  fromAmino(object: AnyIDAmino): AnyID {
+    return {
+      assetID: object?.asset_i_d ? AssetID.fromAmino(object.asset_i_d) : undefined,
+      classificationID: object?.classification_i_d ? ClassificationID.fromAmino(object.classification_i_d) : undefined,
+      coinID: object?.coin_i_d ? CoinID.fromAmino(object.coin_i_d) : undefined,
+      dataID: object?.data_i_d ? DataID.fromAmino(object.data_i_d) : undefined,
+      hashID: object?.hash_i_d ? HashID.fromAmino(object.hash_i_d) : undefined,
+      identityID: object?.identity_i_d ? IdentityID.fromAmino(object.identity_i_d) : undefined,
+      maintainerID: object?.maintainer_i_d ? MaintainerID.fromAmino(object.maintainer_i_d) : undefined,
+      orderID: object?.order_i_d ? OrderID.fromAmino(object.order_i_d) : undefined,
+      ownableID: object?.ownable_i_d ? AnyOwnableID.fromAmino(object.ownable_i_d) : undefined,
+      propertyID: object?.property_i_d ? PropertyID.fromAmino(object.property_i_d) : undefined,
+      splitID: object?.split_i_d ? SplitID.fromAmino(object.split_i_d) : undefined,
+      stringID: object?.string_i_d ? StringID.fromAmino(object.string_i_d) : undefined
+    };
+  },
+  toAmino(message: AnyID): AnyIDAmino {
+    const obj: any = {};
+    obj.asset_i_d = message.assetID ? AssetID.toAmino(message.assetID) : undefined;
+    obj.classification_i_d = message.classificationID ? ClassificationID.toAmino(message.classificationID) : undefined;
+    obj.coin_i_d = message.coinID ? CoinID.toAmino(message.coinID) : undefined;
+    obj.data_i_d = message.dataID ? DataID.toAmino(message.dataID) : undefined;
+    obj.hash_i_d = message.hashID ? HashID.toAmino(message.hashID) : undefined;
+    obj.identity_i_d = message.identityID ? IdentityID.toAmino(message.identityID) : undefined;
+    obj.maintainer_i_d = message.maintainerID ? MaintainerID.toAmino(message.maintainerID) : undefined;
+    obj.order_i_d = message.orderID ? OrderID.toAmino(message.orderID) : undefined;
+    obj.ownable_i_d = message.ownableID ? AnyOwnableID.toAmino(message.ownableID) : undefined;
+    obj.property_i_d = message.propertyID ? PropertyID.toAmino(message.propertyID) : undefined;
+    obj.split_i_d = message.splitID ? SplitID.toAmino(message.splitID) : undefined;
+    obj.string_i_d = message.stringID ? StringID.toAmino(message.stringID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: AnyIDAminoMsg): AnyID {
+    return AnyID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: AnyIDProtoMsg): AnyID {
+    return AnyID.decode(message.value);
+  },
+  toProto(message: AnyID): Uint8Array {
+    return AnyID.encode(message).finish();
+  },
+  toProtoMsg(message: AnyID): AnyIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.AnyID",
+      value: AnyID.encode(message).finish()
+    };
   }
 };

@@ -1,10 +1,10 @@
-import { AccAddressData, AccAddressDataSDKType } from "./acc_address_data";
-import { BooleanData, BooleanDataSDKType } from "./boolean_data";
-import { DecData, DecDataSDKType } from "./dec_data";
-import { HeightData, HeightDataSDKType } from "./height_data";
-import { IDData, IDDataSDKType } from "./id_data";
-import { NumberData, NumberDataSDKType } from "./number_data";
-import { StringData, StringDataSDKType } from "./string_data";
+import { AccAddressData, AccAddressDataAmino, AccAddressDataSDKType } from "./acc_address_data";
+import { BooleanData, BooleanDataAmino, BooleanDataSDKType } from "./boolean_data";
+import { DecData, DecDataAmino, DecDataSDKType } from "./dec_data";
+import { HeightData, HeightDataAmino, HeightDataSDKType } from "./height_data";
+import { IDData, IDDataAmino, IDDataSDKType } from "./id_data";
+import { NumberData, NumberDataAmino, NumberDataSDKType } from "./number_data";
+import { StringData, StringDataAmino, StringDataSDKType } from "./string_data";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface AnyData {
@@ -16,6 +16,24 @@ export interface AnyData {
   listData?: ListData;
   numberData?: NumberData;
   stringData?: StringData;
+}
+export interface AnyDataProtoMsg {
+  typeUrl: "/assetmantle.schema.data.base.AnyData";
+  value: Uint8Array;
+}
+export interface AnyDataAmino {
+  acc_address_data?: AccAddressDataAmino;
+  boolean_data?: BooleanDataAmino;
+  dec_data?: DecDataAmino;
+  height_data?: HeightDataAmino;
+  i_d_data?: IDDataAmino;
+  list_data?: ListDataAmino;
+  number_data?: NumberDataAmino;
+  string_data?: StringDataAmino;
+}
+export interface AnyDataAminoMsg {
+  type: "/assetmantle.schema.data.base.AnyData";
+  value: AnyDataAmino;
 }
 export interface AnyDataSDKType {
   acc_address_data?: AccAddressDataSDKType;
@@ -29,6 +47,17 @@ export interface AnyDataSDKType {
 }
 export interface ListData {
   dataList: AnyData[];
+}
+export interface ListDataProtoMsg {
+  typeUrl: "/assetmantle.schema.data.base.ListData";
+  value: Uint8Array;
+}
+export interface ListDataAmino {
+  data_list: AnyDataAmino[];
+}
+export interface ListDataAminoMsg {
+  type: "/assetmantle.schema.data.base.ListData";
+  value: ListDataAmino;
 }
 export interface ListDataSDKType {
   data_list: AnyDataSDKType[];
@@ -146,6 +175,45 @@ export const AnyData = {
     message.numberData = object.numberData !== undefined && object.numberData !== null ? NumberData.fromPartial(object.numberData) : undefined;
     message.stringData = object.stringData !== undefined && object.stringData !== null ? StringData.fromPartial(object.stringData) : undefined;
     return message;
+  },
+  fromAmino(object: AnyDataAmino): AnyData {
+    return {
+      accAddressData: object?.acc_address_data ? AccAddressData.fromAmino(object.acc_address_data) : undefined,
+      booleanData: object?.boolean_data ? BooleanData.fromAmino(object.boolean_data) : undefined,
+      decData: object?.dec_data ? DecData.fromAmino(object.dec_data) : undefined,
+      heightData: object?.height_data ? HeightData.fromAmino(object.height_data) : undefined,
+      iDData: object?.i_d_data ? IDData.fromAmino(object.i_d_data) : undefined,
+      listData: object?.list_data ? ListData.fromAmino(object.list_data) : undefined,
+      numberData: object?.number_data ? NumberData.fromAmino(object.number_data) : undefined,
+      stringData: object?.string_data ? StringData.fromAmino(object.string_data) : undefined
+    };
+  },
+  toAmino(message: AnyData): AnyDataAmino {
+    const obj: any = {};
+    obj.acc_address_data = message.accAddressData ? AccAddressData.toAmino(message.accAddressData) : undefined;
+    obj.boolean_data = message.booleanData ? BooleanData.toAmino(message.booleanData) : undefined;
+    obj.dec_data = message.decData ? DecData.toAmino(message.decData) : undefined;
+    obj.height_data = message.heightData ? HeightData.toAmino(message.heightData) : undefined;
+    obj.i_d_data = message.iDData ? IDData.toAmino(message.iDData) : undefined;
+    obj.list_data = message.listData ? ListData.toAmino(message.listData) : undefined;
+    obj.number_data = message.numberData ? NumberData.toAmino(message.numberData) : undefined;
+    obj.string_data = message.stringData ? StringData.toAmino(message.stringData) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: AnyDataAminoMsg): AnyData {
+    return AnyData.fromAmino(object.value);
+  },
+  fromProtoMsg(message: AnyDataProtoMsg): AnyData {
+    return AnyData.decode(message.value);
+  },
+  toProto(message: AnyData): Uint8Array {
+    return AnyData.encode(message).finish();
+  },
+  toProtoMsg(message: AnyData): AnyDataProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.data.base.AnyData",
+      value: AnyData.encode(message).finish()
+    };
   }
 };
 function createBaseListData(): ListData {
@@ -195,5 +263,34 @@ export const ListData = {
     const message = createBaseListData();
     message.dataList = object.dataList?.map(e => AnyData.fromPartial(e)) || [];
     return message;
+  },
+  fromAmino(object: ListDataAmino): ListData {
+    return {
+      dataList: Array.isArray(object?.data_list) ? object.data_list.map((e: any) => AnyData.fromAmino(e)) : []
+    };
+  },
+  toAmino(message: ListData): ListDataAmino {
+    const obj: any = {};
+    if (message.dataList) {
+      obj.data_list = message.dataList.map(e => e ? AnyData.toAmino(e) : undefined);
+    } else {
+      obj.data_list = [];
+    }
+    return obj;
+  },
+  fromAminoMsg(object: ListDataAminoMsg): ListData {
+    return ListData.fromAmino(object.value);
+  },
+  fromProtoMsg(message: ListDataProtoMsg): ListData {
+    return ListData.decode(message.value);
+  },
+  toProto(message: ListData): Uint8Array {
+    return ListData.encode(message).finish();
+  },
+  toProtoMsg(message: ListData): ListDataProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.data.base.ListData",
+      value: ListData.encode(message).finish()
+    };
   }
 };

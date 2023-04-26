@@ -1,12 +1,25 @@
-import { ClassificationID, ClassificationIDSDKType } from "../../ids/base/classification_id";
-import { Immutables, ImmutablesSDKType } from "../../qualified/base/immutables";
-import { Mutables, MutablesSDKType } from "../../qualified/base/mutables";
+import { ClassificationID, ClassificationIDAmino, ClassificationIDSDKType } from "../../ids/base/classification_id";
+import { Immutables, ImmutablesAmino, ImmutablesSDKType } from "../../qualified/base/immutables";
+import { Mutables, MutablesAmino, MutablesSDKType } from "../../qualified/base/mutables";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Document {
   classificationID?: ClassificationID;
   immutables?: Immutables;
   mutables?: Mutables;
+}
+export interface DocumentProtoMsg {
+  typeUrl: "/assetmantle.schema.documents.base.Document";
+  value: Uint8Array;
+}
+export interface DocumentAmino {
+  classification_i_d?: ClassificationIDAmino;
+  immutables?: ImmutablesAmino;
+  mutables?: MutablesAmino;
+}
+export interface DocumentAminoMsg {
+  type: "/assetmantle.schema.documents.base.Document";
+  value: DocumentAmino;
 }
 export interface DocumentSDKType {
   classification_i_d?: ClassificationIDSDKType;
@@ -76,5 +89,34 @@ export const Document = {
     message.immutables = object.immutables !== undefined && object.immutables !== null ? Immutables.fromPartial(object.immutables) : undefined;
     message.mutables = object.mutables !== undefined && object.mutables !== null ? Mutables.fromPartial(object.mutables) : undefined;
     return message;
+  },
+  fromAmino(object: DocumentAmino): Document {
+    return {
+      classificationID: object?.classification_i_d ? ClassificationID.fromAmino(object.classification_i_d) : undefined,
+      immutables: object?.immutables ? Immutables.fromAmino(object.immutables) : undefined,
+      mutables: object?.mutables ? Mutables.fromAmino(object.mutables) : undefined
+    };
+  },
+  toAmino(message: Document): DocumentAmino {
+    const obj: any = {};
+    obj.classification_i_d = message.classificationID ? ClassificationID.toAmino(message.classificationID) : undefined;
+    obj.immutables = message.immutables ? Immutables.toAmino(message.immutables) : undefined;
+    obj.mutables = message.mutables ? Mutables.toAmino(message.mutables) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: DocumentAminoMsg): Document {
+    return Document.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DocumentProtoMsg): Document {
+    return Document.decode(message.value);
+  },
+  toProto(message: Document): Uint8Array {
+    return Document.encode(message).finish();
+  },
+  toProtoMsg(message: Document): DocumentProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.documents.base.Document",
+      value: Document.encode(message).finish()
+    };
   }
 };

@@ -1,8 +1,19 @@
-import { OrderID, OrderIDSDKType } from "../../ids/base/order_id";
+import { OrderID, OrderIDAmino, OrderIDSDKType } from "../../ids/base/order_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface Key {
   orderID?: OrderID;
+}
+export interface KeyProtoMsg {
+  typeUrl: "/assetmantle.modules.orders.key.Key";
+  value: Uint8Array;
+}
+export interface KeyAmino {
+  order_i_d?: OrderIDAmino;
+}
+export interface KeyAminoMsg {
+  type: "/assetmantle.modules.orders.key.Key";
+  value: KeyAmino;
 }
 export interface KeySDKType {
   order_i_d?: OrderIDSDKType;
@@ -50,5 +61,30 @@ export const Key = {
     const message = createBaseKey();
     message.orderID = object.orderID !== undefined && object.orderID !== null ? OrderID.fromPartial(object.orderID) : undefined;
     return message;
+  },
+  fromAmino(object: KeyAmino): Key {
+    return {
+      orderID: object?.order_i_d ? OrderID.fromAmino(object.order_i_d) : undefined
+    };
+  },
+  toAmino(message: Key): KeyAmino {
+    const obj: any = {};
+    obj.order_i_d = message.orderID ? OrderID.toAmino(message.orderID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: KeyAminoMsg): Key {
+    return Key.fromAmino(object.value);
+  },
+  fromProtoMsg(message: KeyProtoMsg): Key {
+    return Key.decode(message.value);
+  },
+  toProto(message: Key): Uint8Array {
+    return Key.encode(message).finish();
+  },
+  toProtoMsg(message: Key): KeyProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.orders.key.Key",
+      value: Key.encode(message).finish()
+    };
   }
 };

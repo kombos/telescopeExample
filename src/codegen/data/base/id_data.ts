@@ -1,8 +1,19 @@
-import { AnyID, AnyIDSDKType } from "../../ids/base/any_id";
+import { AnyID, AnyIDAmino, AnyIDSDKType } from "../../ids/base/any_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface IDData {
   value?: AnyID;
+}
+export interface IDDataProtoMsg {
+  typeUrl: "/assetmantle.schema.data.base.IDData";
+  value: Uint8Array;
+}
+export interface IDDataAmino {
+  value?: AnyIDAmino;
+}
+export interface IDDataAminoMsg {
+  type: "/assetmantle.schema.data.base.IDData";
+  value: IDDataAmino;
 }
 export interface IDDataSDKType {
   value?: AnyIDSDKType;
@@ -50,5 +61,30 @@ export const IDData = {
     const message = createBaseIDData();
     message.value = object.value !== undefined && object.value !== null ? AnyID.fromPartial(object.value) : undefined;
     return message;
+  },
+  fromAmino(object: IDDataAmino): IDData {
+    return {
+      value: object?.value ? AnyID.fromAmino(object.value) : undefined
+    };
+  },
+  toAmino(message: IDData): IDDataAmino {
+    const obj: any = {};
+    obj.value = message.value ? AnyID.toAmino(message.value) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: IDDataAminoMsg): IDData {
+    return IDData.fromAmino(object.value);
+  },
+  fromProtoMsg(message: IDDataProtoMsg): IDData {
+    return IDData.decode(message.value);
+  },
+  toProto(message: IDData): Uint8Array {
+    return IDData.encode(message).finish();
+  },
+  toProtoMsg(message: IDData): IDDataProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.data.base.IDData",
+      value: IDData.encode(message).finish()
+    };
   }
 };

@@ -3,6 +3,17 @@ import { isSet } from "../../../helpers";
 export interface TransactionResponse {
   nubID: string;
 }
+export interface TransactionResponseProtoMsg {
+  typeUrl: "/assetmantle.modules.identities.transactions.nub.TransactionResponse";
+  value: Uint8Array;
+}
+export interface TransactionResponseAmino {
+  nub_i_d: string;
+}
+export interface TransactionResponseAminoMsg {
+  type: "/assetmantle.modules.identities.transactions.nub.TransactionResponse";
+  value: TransactionResponseAmino;
+}
 export interface TransactionResponseSDKType {
   nub_i_d: string;
 }
@@ -49,5 +60,30 @@ export const TransactionResponse = {
     const message = createBaseTransactionResponse();
     message.nubID = object.nubID ?? "";
     return message;
+  },
+  fromAmino(object: TransactionResponseAmino): TransactionResponse {
+    return {
+      nubID: object.nub_i_d
+    };
+  },
+  toAmino(message: TransactionResponse): TransactionResponseAmino {
+    const obj: any = {};
+    obj.nub_i_d = message.nubID;
+    return obj;
+  },
+  fromAminoMsg(object: TransactionResponseAminoMsg): TransactionResponse {
+    return TransactionResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: TransactionResponseProtoMsg): TransactionResponse {
+    return TransactionResponse.decode(message.value);
+  },
+  toProto(message: TransactionResponse): Uint8Array {
+    return TransactionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: TransactionResponse): TransactionResponseProtoMsg {
+    return {
+      typeUrl: "/assetmantle.modules.identities.transactions.nub.TransactionResponse",
+      value: TransactionResponse.encode(message).finish()
+    };
   }
 };

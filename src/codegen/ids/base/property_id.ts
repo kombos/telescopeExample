@@ -1,9 +1,21 @@
-import { StringID, StringIDSDKType } from "./string_id";
+import { StringID, StringIDAmino, StringIDSDKType } from "./string_id";
 import * as _m0 from "protobufjs/minimal";
 import { isSet } from "../../helpers";
 export interface PropertyID {
   keyID?: StringID;
   typeID?: StringID;
+}
+export interface PropertyIDProtoMsg {
+  typeUrl: "/assetmantle.schema.ids.base.PropertyID";
+  value: Uint8Array;
+}
+export interface PropertyIDAmino {
+  key_i_d?: StringIDAmino;
+  type_i_d?: StringIDAmino;
+}
+export interface PropertyIDAminoMsg {
+  type: "/assetmantle.schema.ids.base.PropertyID";
+  value: PropertyIDAmino;
 }
 export interface PropertyIDSDKType {
   key_i_d?: StringIDSDKType;
@@ -62,5 +74,32 @@ export const PropertyID = {
     message.keyID = object.keyID !== undefined && object.keyID !== null ? StringID.fromPartial(object.keyID) : undefined;
     message.typeID = object.typeID !== undefined && object.typeID !== null ? StringID.fromPartial(object.typeID) : undefined;
     return message;
+  },
+  fromAmino(object: PropertyIDAmino): PropertyID {
+    return {
+      keyID: object?.key_i_d ? StringID.fromAmino(object.key_i_d) : undefined,
+      typeID: object?.type_i_d ? StringID.fromAmino(object.type_i_d) : undefined
+    };
+  },
+  toAmino(message: PropertyID): PropertyIDAmino {
+    const obj: any = {};
+    obj.key_i_d = message.keyID ? StringID.toAmino(message.keyID) : undefined;
+    obj.type_i_d = message.typeID ? StringID.toAmino(message.typeID) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: PropertyIDAminoMsg): PropertyID {
+    return PropertyID.fromAmino(object.value);
+  },
+  fromProtoMsg(message: PropertyIDProtoMsg): PropertyID {
+    return PropertyID.decode(message.value);
+  },
+  toProto(message: PropertyID): Uint8Array {
+    return PropertyID.encode(message).finish();
+  },
+  toProtoMsg(message: PropertyID): PropertyIDProtoMsg {
+    return {
+      typeUrl: "/assetmantle.schema.ids.base.PropertyID",
+      value: PropertyID.encode(message).finish()
+    };
   }
 };
