@@ -1,19 +1,19 @@
-# telescopemodule
+# newModule
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/545047/188804067-28e67e5e-0214-4449-ab04-2e0c564a6885.svg" width="80"><br />
-    telescope generated endpoints for assetmante (sample)
+    newModule description
 </p>
 
 
 ## install
 
 ```sh
-npm install telescopemodule
+npm install newModule
 ```
 ## Table of contents
 
-- [telescopemodule](#telescopemodule)
+- [newModule](#newModule)
   - [Install](#install)
   - [Table of contents](#table-of-contents)
 - [Usage](#usage)
@@ -35,7 +35,7 @@ npm install telescopemodule
 ### RPC Clients
 
 ```js
-import { assetmantle } from 'telescopemodule';
+import { assetmantle } from 'newModule';
 
 const { createRPCQueryClient } = assetmantle.ClientFactory; 
 const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
@@ -51,10 +51,10 @@ const balances = await client.assetmantle.exchange.v1beta1
 
 ### Composing Messages
 
-Import the `assetmantle` object from `telescopemodule`. 
+Import the `assetmantle` object from `newModule`. 
 
 ```js
-import { assetmantle } from 'telescopemodule';
+import { assetmantle } from 'newModule';
 
 const {
     createSpotLimitOrder,
@@ -66,7 +66,7 @@ const {
 #### CosmWasm Messages
 
 ```js
-import { cosmwasm } from "telescopemodule";
+import { cosmwasm } from "newModule";
 
 const {
     clearAdmin,
@@ -81,7 +81,7 @@ const {
 #### IBC Messages
 
 ```js
-import { ibc } from 'telescopemodule';
+import { ibc } from 'newModule';
 
 const {
     transfer
@@ -91,7 +91,7 @@ const {
 #### Cosmos Messages
 
 ```js
-import { cosmos } from 'telescopemodule';
+import { cosmos } from 'newModule';
 
 const {
     fundCommunityPool,
@@ -132,7 +132,7 @@ Here are the docs on [creating signers](https://github.com/cosmology-tech/cosmos
 Use `getSigningassetmantleClient` to get your `SigningStargateClient`, with the proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
 
 ```js
-import { getSigningassetmantleClient } from 'telescopemodule';
+import { getSigningassetmantleClient } from 'newModule';
 
 const stargateClient = await getSigningassetmantleClient({
   rpcEndpoint,
@@ -220,7 +220,7 @@ import {
     ibcAminoConverters,
     assetmantleAminoConverters,
     assetmantleProtoRegistry
-} from 'telescopemodule';
+} from 'newModule';
 
 const signer: OfflineSigner = /* create your signer (see above)  */
 const rpcEndpint = 'https://rpc.cosmos.directory/assetmantle'; // or another URL
@@ -259,7 +259,7 @@ yarn build
 
 ### Codegen
 
-Contract schemas live in `./contracts`, and protos in `./proto`. Look inside of `scripts/codegen.js` and configure the settings for bundling your SDK and contracts into `telescopemodule`:
+Contract schemas live in `./contracts`, and protos in `./proto`. Look inside of `scripts/codegen.js` and configure the settings for bundling your SDK and contracts into `newModule`:
 
 ```
 yarn codegen
