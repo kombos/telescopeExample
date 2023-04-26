@@ -1,6 +1,6 @@
 import { join } from 'path';
 import telescope from '@osmonauts/telescope';
-import { sync as rimraf } from 'rimraf';
+import { rimrafSync as rimraf } from 'rimraf';
 import { AMINO_MAP } from './aminos';
 
 const protoDirs = [join(__dirname, '/../proto')];
@@ -11,7 +11,6 @@ telescope({
   protoDirs,
   outPath,
   options: {
-    experimentalGlobalProtoNamespace: true,
     tsDisable: {
       files: [
         'cosmos/authz/v1beta1/tx.amino.ts',
@@ -27,16 +26,13 @@ telescope({
         duration: 'duration'
       },
       methods: {
-        toAmino: true,
-        fromAmino: true,
         toJSON: true,
         fromJSON: true
       }
     },
     aminoEncoding: {
       enabled: true,
-      exceptions: AMINO_MAP,
-      useRecursiveV2encoding: true
+      exceptions: AMINO_MAP
     },
     lcdClients: {
       enabled: false
