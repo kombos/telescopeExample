@@ -1,8 +1,0 @@
-syntax = "proto3";
-package assetmantle.classifications.v1beta1;
-
-import "assetmantle/base/ids/internal/classificationID.v1.proto";
-
-message Key {
-  assetmantle.base.ids.ClassificationID classification_i_d = 1;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-package assetmantle.maintainers.v1beta1;
-
-import "assetmantle/base/ids/internal/maintainerID.v1.proto";
-
-message Key {
-  assetmantle.base.ids.MaintainerID maintainer_i_d = 1;
-}

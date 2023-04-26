@@ -1,8 +1,0 @@
-syntax = "proto3";
-package assetmantle.splits.v1beta1.queries.split;
-
-import "assetmantle/base/ids/internal/splitID.v1.proto";
-
-message QueryRequest {
-  assetmantle.base.ids.SplitID split_i_d = 1;
-}

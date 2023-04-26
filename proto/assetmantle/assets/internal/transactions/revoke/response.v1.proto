@@ -1,4 +1,0 @@
-syntax = "proto3";
-package assetmantle.assets.v1beta1.transactions.revoke;
-
-message Response {}

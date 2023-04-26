@@ -1,7 +1,0 @@
-syntax = "proto3";
-package assetmantle.assets.v1beta1;
-
-import "assetmantle/base/documents/internal/document.v1.proto";
-message Mappable {
-  assetmantle.base.documents.Document asset = 1;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-package assetmantle.identities.v1beta1.queries.identity;
-
-import "assetmantle/base/ids/internal/identityID.v1.proto";
-
-message QueryRequest {
-  assetmantle.base.ids.IdentityID identity_i_d = 1;
-}
