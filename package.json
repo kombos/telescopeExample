@@ -31,8 +31,7 @@
     "lint": "eslint src --fix",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
-    "generateassetmantle": "npx buf export buf.build/assetmantle/schema --output ./proto2"
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
   },
   "publishConfig": {
     "access": "public"
@@ -61,7 +60,7 @@
     "@babel/preset-typescript": "^7.21.4",
     "@osmonauts/telescope": "^0.92.2",
     "@protobufs/cosmos": "^0.1.0",
-    "@protobufs/gogoproto": "^0.0.10",
+    "@protobufs/osmosis": "^0.4.0",
     "@types/jest": "^29.5.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "29.5.0",
