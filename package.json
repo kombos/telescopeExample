@@ -1,9 +1,9 @@
 {
-  "name": "@kombos/newModule",
+  "name": "@kombos/telescopeExample",
   "version": "0.0.1",
-  "description": "newModule description",
+  "description": "Example implementation of AssetMantle JS/TS endpoints generated from Telescope",
   "author": "kombos <kamlesh@assetmantle.one>",
-  "homepage": "https://github.com/kombos/newModule#readme",
+  "homepage": "https://github.com/kombos/telescopeExample#readme",
   "license": "SEE LICENSE IN LICENSE",
   "main": "main/index.js",
   "module": "module/index.js",
@@ -39,11 +39,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kombos/newModule"
+    "url": "https://github.com/kombos/telescopeExample"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/kombos/newModule/issues"
+    "url": "https://github.com/kombos/telescopeExample/issues"
   },
   "devDependencies": {
     "@babel/cli": "7.21.0",
