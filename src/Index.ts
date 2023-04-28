@@ -1,11 +1,12 @@
-import {
+/* import {
   assetmantle,
   cosmos,
   getSigningAssetmantleClient,
   getSigningCosmosClient,
-} from "./codegen";
+} from "./codegen"; */
 
 export * from "./codegen";
+/*
 // fake variables
 const rpcEndpoint = "";
 let signer;
@@ -80,4 +81,4 @@ await signingAssetMantleClient.signAndBroadcast(
   memo
 );
 const uint8val;
-const assetId = assetmantle.schema.documents.base.Document.encode();
+const assetId = assetmantle.schema.documents.base.Document.encode(); */
