@@ -1,5 +1,5 @@
 {
-  "name": "@kombos/telescopeExample",
+  "name": "@kombos/telescopeexample",
   "version": "0.0.1",
   "description": "Example implementation of AssetMantle JS/TS endpoints generated from Telescope",
   "author": "kombos <kamlesh@assetmantle.one>",
