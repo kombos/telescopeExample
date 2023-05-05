@@ -1,6 +1,6 @@
 {
   "name": "@kombos/telescopeexample",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Example implementation of AssetMantle JS/TS endpoints generated from Telescope",
   "author": "kombos <kamlesh@assetmantle.one>",
   "homepage": "https://github.com/kombos/telescopeExample#readme",
@@ -81,10 +81,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.21.0",
-    "@cosmjs/amino": "0.29.4",
-    "@cosmjs/proto-signing": "0.29.4",
-    "@cosmjs/stargate": "0.29.4",
-    "@cosmjs/tendermint-rpc": "^0.29.4",
+    "@cosmjs/amino": "^0.30.1",
+    "@cosmjs/proto-signing": "^0.30.1",
+    "@cosmjs/stargate": "^0.30.1",
+    "@cosmjs/tendermint-rpc": "^0.30.1",
     "protobufjs": "^6.11.2"
   }
 }
